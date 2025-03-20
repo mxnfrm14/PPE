@@ -1,5 +1,6 @@
 <template>
     <div class="home">
+        <Header_title title="E-Garden" subtitle="Votre jardin connecté" />
         <header class="hero">
             <h1>Bienvenue sur E-Garden</h1>
             <p>Votre solution pour un jardinage intelligent et connecté.</p>
@@ -16,6 +17,8 @@
 </template>
 
 <script>
+import Header_title from "~/components/header_title.vue";
+
 export default {
     data() {
         return {
@@ -47,16 +50,19 @@ export default {
 }
 
 .hero h1 {
+    font-family: "Aeonik-Bold";
     font-size: 2.5em;
     margin-bottom: 10px;
 }
 
 .hero p {
+    font-family: "Aeonik-Regular";
     font-size: 1.2em;
     margin-bottom: 20px;
 }
 
 .hero button {
+    font-family: "Aeonik-Bold";
     background-color: white;
     color: #4caf50;
     border: none;
@@ -75,6 +81,7 @@ export default {
 }
 
 .features h2 {
+    font-family: "Aeonik-Bold";
     font-size: 2em;
     margin-bottom: 20px;
 }
@@ -84,11 +91,13 @@ export default {
 }
 
 .feature h3 {
+    font-family: "Aeonik-Bold";
     font-size: 1.5em;
     color: #4caf50;
 }
 
 .feature p {
+    font-family: "Aeonik-Regular";
     font-size: 1em;
     color: #555;
 }

@@ -18,11 +18,13 @@ export default {
 }
 
 h1 {
+    font-family: "Aeonik-Bold";
     font-size: 2rem;
     color: #4CAF50;
 }
 
 p {
+    font-family: "Aeonik-Regular";
     font-size: 1.2rem;
     color: #555;
 }
