@@ -1,0 +1,95 @@
+<template>
+    <div class="home">
+        <header class="hero">
+            <h1>Bienvenue sur E-Garden</h1>
+            <p>Votre solution pour un jardinage intelligent et connecté.</p>
+            <button @click="explore">Explorer</button>
+        </header>
+        <section class="features">
+            <h2>Nos fonctionnalités</h2>
+            <div class="feature" v-for="feature in features" :key="feature.id">
+                <h3>{{ feature.title }}</h3>
+                <p>{{ feature.description }}</p>
+            </div>
+        </section>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            features: [
+                { id: 1, title: "Suivi des plantes", description: "Gardez un œil sur la santé de vos plantes." },
+                { id: 2, title: "Arrosage automatique", description: "Programmez l'arrosage selon vos besoins." },
+                { id: 3, title: "Conseils personnalisés", description: "Recevez des astuces adaptées à votre jardin." },
+            ],
+        };
+    },
+    methods: {
+        explore() {
+            this.$router.push('/explore');
+        },
+    },
+};
+</script>
+
+<style scoped>
+.home {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero {
+    background-color: #4caf50;
+    color: white;
+    padding: 50px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.hero button {
+    background-color: white;
+    color: #4caf50;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero button:hover {
+    background-color: #45a049;
+}
+
+.features {
+    margin-top: 30px;
+}
+
+.features h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.feature {
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    font-size: 1.5em;
+    color: #4caf50;
+}
+
+.feature p {
+    font-size: 1em;
+    color: #555;
+}
+</style>
