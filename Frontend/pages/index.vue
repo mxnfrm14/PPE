@@ -4,7 +4,7 @@
         <header class="hero">
             <h1>Bienvenue sur E-Garden</h1>
             <p>Votre solution pour un jardinage intelligent et connecté.</p>
-            <button @click="explore">Explorer</button>
+            <button @click="test">Explorer</button>
         </header>
         <section class="features">
             <h2>Nos fonctionnalités</h2>
@@ -30,6 +30,12 @@ export default {
         };
     },
     methods: {
+        async test() {
+            const response = await $fetch('/api');
+            console.log(response.message);
+            
+            
+        },
         explore() {
             this.$router.push('/explore');
         },
