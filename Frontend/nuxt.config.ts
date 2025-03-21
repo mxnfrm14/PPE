@@ -14,12 +14,18 @@ export default defineNuxtConfig({
     '@nuxt/fonts'
   ],
 
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: '/api', // Use /api as the base URL
+    },
+  },
   nitro: {
     devProxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'http://localhost:8000', // Backend URL
         changeOrigin: true,
-      }
-    }
-  }
+        prependPath: true,
+      },
+    },
+  },
 })

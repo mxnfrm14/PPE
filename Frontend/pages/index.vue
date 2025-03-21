@@ -4,7 +4,9 @@
         <header class="hero">
             <h1>Bienvenue sur E-Garden</h1>
             <p>Votre solution pour un jardinage intelligent et connecté.</p>
-            <button @click="test">Explorer</button>
+            <button @click="test">test api</button>
+            <button @click="explore">Test BDD</button>
+            <button @click="goToPPE">PPE</button>
         </header>
         <section class="features">
             <h2>Nos fonctionnalités</h2>
@@ -31,10 +33,11 @@ export default {
     },
     methods: {
         async test() {
-            const response = await $fetch('/api');
+            const response = await $fetch("/api");
             console.log(response.message);
-            
-            
+        },
+        goToPPE() {
+            this.$router.push('/ppe');
         },
         explore() {
             this.$router.push('/explore');
