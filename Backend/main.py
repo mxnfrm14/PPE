@@ -112,6 +112,28 @@ async def create_test_user(user_data: dict, db=Depends(get_database)):
             "status": "error",
             "message": f"Error creating test user: {str(e)}"
         }
+    
+@app.get("/users")
+async def get_all_users(db=Depends(get_database)):
+    try:
+        collection = db["users"]
+        
+        # Fetch all users
+        users = await collection.find().to_list(length=None)
+        
+        # Convert ObjectId to string
+        for user in users:
+            user["_id"] = str(user["_id"])
+        
+        return {
+            "status": "success",
+            "users": users
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": f"Error fetching users: {str(e)}"
+        }
 
 # Entry point
 if __name__ == "__main__":

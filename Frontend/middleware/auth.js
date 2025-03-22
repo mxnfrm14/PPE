@@ -4,8 +4,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
     const { isAuthenticated } = useAuth();
     const token = localStorage.getItem('auth_token');
     
-    // If route requires auth and no token exists, redirect to login
-    if (!token && !isAuthenticated.value) {
+    // Vérification plus stricte
+    if (!token || !isAuthenticated.value) {
+      console.log('Redirection vers login depuis le middleware auth');
       return navigateTo('/login');
     }
   }

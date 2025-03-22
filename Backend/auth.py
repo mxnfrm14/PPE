@@ -35,6 +35,7 @@ class UserCreate(BaseModel):
     username: str = Field(..., min_length=3, max_length=50)
     email: EmailStr
     password: str = Field(..., min_length=6)
+    role: str = "user"  # Valeur par défaut
 
 class UserInDB(BaseModel):
     username: str
@@ -42,11 +43,13 @@ class UserInDB(BaseModel):
     hashed_password: str
     disabled: bool = False
     created_at: datetime = datetime.now()
+    role: str = "user"  # Valeur par défaut
 
 class User(BaseModel):
     username: str
     email: str
     disabled: bool = False
+    role: str = "user"  # Ajouté ici aussi pour la réponse
 
 class Token(BaseModel):
     access_token: str
@@ -139,7 +142,8 @@ async def register_user(user: UserCreate, db: AsyncIOMotorDatabase = Depends(get
     user_in_db = UserInDB(
         username=user.username,
         email=user.email,
-        hashed_password=hashed_password
+        hashed_password=hashed_password,
+        role=user.role
     )
     
     # Insert user into database

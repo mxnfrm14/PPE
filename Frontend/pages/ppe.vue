@@ -8,6 +8,7 @@ import Header_title from "~/components/header_title.vue";
 import indicators from "~/components/indicators.vue";
 import swichMode from "~/components/switch_mode.vue";
 import ContentSemis from "~/components/content_semis.vue";
+import navbar from "~/components/navbar.vue";
 import { ref } from 'vue';
 import { useAuth } from '~/composables/useAuth';
 import { useRouter } from 'vue-router';
@@ -30,7 +31,7 @@ const handleLogout = () => {
 
 <template>
   <div class="wrapper_page">
-    <NavbarVertical></NavbarVertical>
+    <navbar></navbar>
     <div class="header_bis">
       <header_title
         title="Gestion des Semis"
