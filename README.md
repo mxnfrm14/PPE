@@ -1,75 +1,137 @@
-# Nuxt Minimal Starter
+# E-Garden - Système de Jardinage Intelligent
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+E-Garden est une application web permettant de gérer et de surveiller un jardin connecté. L'application offre des fonctionnalités de suivi des plantes, d'arrosage automatique et de conseils personnalisés pour votre jardin.
 
-## Setup
+## Structure du Projet
 
-Make sure to install dependencies:
+Le projet est composé de deux parties principales :
 
-```bash
-# npm
-npm install
+- **Frontend** : Application Nuxt.js (Vue 3) pour l'interface utilisateur
+- **Backend** : API FastAPI avec MongoDB pour la gestion des données
 
-# pnpm
-pnpm install
+## Prérequis
 
-# yarn
-yarn install
+- Node.js (version 18 ou supérieure)
+- Python 3.9+
+- MongoDB (local ou distant)
+- Yarn (recommandé) ou npm
 
-# bun
-bun install
-```
+## Installation
 
-## Development Server
+### Configuration de l'environnement
 
-Start the development server on `http://localhost:3000`:
+1. Clonez ce dépôt :
+   ```bash
+   git clone <url-du-repository>
+   cd e-garden
+   ```
 
-```bash
-# npm
-npm run dev
+2. Créez un fichier `.env` à la racine du dossier Backend avec les variables suivantes :
+   ```
+   MONGODB_URL=<votre-url-mongodb>
+   MONGODB_DB=e_garden
+   JWT_SECRET_KEY=<votre-clé-secrète-jwt>
+   ```
 
-# pnpm
-pnpm dev
+### Backend (FastAPI)
 
-# yarn
-yarn dev
+1. Naviguez vers le dossier Backend :
+   ```bash
+   cd Backend
+   ```
 
-# bun
-bun run dev
-```
+2. Créez un environnement virtuel Python et activez-le :
+   ```bash
+   python -m venv venv
+   
+   # Sur Windows
+   venv\Scripts\activate
+   
+   # Sur macOS/Linux
+   source venv/bin/activate
+   ```
 
-## Production
+3. Installez les dépendances :
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Build the application for production:
+4. Lancez le serveur backend :
+   ```bash
+   python main.py
+   ```
+   Le serveur FastAPI sera accessible à l'adresse : http://localhost:8000
 
-```bash
-# npm
-npm run build
+### Frontend (Nuxt.js)
 
-# pnpm
-pnpm build
+1. Naviguez vers le dossier Frontend :
+   ```bash
+   cd Frontend
+   ```
 
-# yarn
-yarn build
+2. Installez les dépendances :
+   ```bash
+   yarn install
+   # OU
+   npm install
+   ```
 
-# bun
-bun run build
-```
+3. Lancez le serveur de développement :
+   ```bash
+   yarn dev
+   # OU
+   npm run dev
+   ```
+   L'application sera accessible à l'adresse : http://localhost:3000
 
-Locally preview production build:
+## Fonctionnalités
 
-```bash
-# npm
-npm run preview
+### Authentification
+- Inscription / Connexion utilisateur
+- Protection des routes par authentification JWT
 
-# pnpm
-pnpm preview
+### Gestion des Semis
+- Suivi de l'humidité des plantes
+- Gestion de l'arrosage automatique et manuel
+- Surveillance de la température
+- Calendrier des plantations
 
-# yarn
-yarn preview
+### Mode de Fonctionnement
+- Mode automatique / manuel pour l'arrosage des plantes
 
-# bun
-bun run preview
-```
+## Structure des Dossiers
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Frontend
+- `components/` : Composants Vue.js réutilisables
+- `pages/` : Pages de l'application (routage automatique par Nuxt)
+- `composables/` : Fonctions et logique réutilisables (dont l'authentification)
+- `middleware/` : Middleware d'authentification pour protéger les routes
+- `plugins/` : Plugins Nuxt
+- `public/assets/` : Ressources statiques (images, CSS, etc.)
+
+### Backend
+- `main.py` : Point d'entrée de l'API FastAPI
+- `auth.py` : Routes et logique d'authentification
+
+## API Endpoints
+
+### Authentification
+- `POST /api/auth/register` : Inscription d'un nouvel utilisateur
+- `POST /api/auth/token` : Connexion et obtention du token JWT
+- `GET /api/auth/me` : Obtenir les informations de l'utilisateur connecté
+
+### Tests
+- `GET /api/mongodb` : Test de connexion à MongoDB
+- `POST /api/users/test` : Création d'un utilisateur de test
+
+## Dépannage
+
+### Problèmes de connexion à MongoDB
+- Vérifiez que votre URL MongoDB est correcte dans le fichier `.env`
+- Assurez-vous que votre IP est autorisée dans les paramètres du cluster MongoDB
+- Vérifiez les logs du serveur pour plus de détails sur les erreurs
+
+### Problèmes d'authentification
+- Assurez-vous que JWT_SECRET_KEY est correctement défini
+- Vérifiez que les requêtes incluent le token JWT dans l'en-tête Authorization
+
