@@ -60,18 +60,15 @@ async def get_database():
     return mongo_client[db_name]
 
 # Include the auth router
-app.include_router(auth_router, prefix="/api")
+app.include_router(auth_router)
 
 # API routes
 @app.get("/")
 def read_root():
     return {"message": "Welcome to E-Garden Smart Gardening System!"}
 
-@app.get("/api")
-def read_api_root():
-    return {"message": "E-Garden API is running!"}
 
-@app.get("/api/mongodb")
+@app.get("/mongodb")
 async def test_mongodb(db=Depends(get_database)):
     try:
         # Test connection by listing collections
@@ -89,7 +86,7 @@ async def test_mongodb(db=Depends(get_database)):
             detail=f"MongoDB connection error: {str(e)}"
         )
     
-@app.post("/api/users/test")
+@app.post("/users/test")
 async def create_test_user(user_data: dict, db=Depends(get_database)):
     try:
         collection = db["users"]

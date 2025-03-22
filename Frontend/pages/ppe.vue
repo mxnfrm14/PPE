@@ -1,12 +1,19 @@
 <script setup lang="ts">
-// import NavbarVertical from "~/components/navbar_vertical.vue";
+// Apply auth middleware to protect this page
+definePageMeta({
+  middleware: ['auth']
+});
+
 import Header_title from "~/components/header_title.vue";
 import indicators from "~/components/indicators.vue";
 import swichMode from "~/components/switch_mode.vue";
 import ContentSemis from "~/components/content_semis.vue";
 import { ref } from 'vue';
+import { useAuth } from '~/composables/useAuth';
+import { useRouter } from 'vue-router';
 
-
+const router = useRouter();
+const { user, logout } = useAuth();
 const contentSemisRef = ref(null);
 
 const changeView = (view) => {
@@ -15,11 +22,15 @@ const changeView = (view) => {
   }
 };
 
+const handleLogout = () => {
+  logout();
+  router.push('/login');
+};
 </script>
 
 <template>
   <div class="wrapper_page">
-    <!-- <NavbarVertical></NavbarVertical> -->
+    <NavbarVertical></NavbarVertical>
     <div class="header_bis">
       <header_title
         title="Gestion des Semis"
