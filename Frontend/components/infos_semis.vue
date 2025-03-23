@@ -1,4 +1,14 @@
 <script setup lang="ts">
+import { reactive } from 'vue';
+
+// Accept the selected plant ID as a prop
+const props = defineProps({
+    selectedPlantId: {
+        type: Number,
+        default: null
+    }
+});
+
 const test = reactive([
     {
         id:1,
@@ -27,21 +37,37 @@ const test = reactive([
         txHumidMesure: 80,
     },
 ]);
+
+// Get the selected plant based on the ID
+const getSelectedPlant = () => {
+    if (!props.selectedPlantId) return null;
+    return test.find(plant => plant.id === props.selectedPlantId);
+};
 </script>
 
 <template>
-    <div class="infos" >
-        <div v-for="(plant, index) in test" :key="index">
-            <div class="info-card"  v-if="plant.id === 2">
-
-                <!-- Ajouter code affichage des infos Semis ici -->
-                <div class="text-info">
-                    <p>  Methode recommendée : {{ plant.methodesReco }}</p>
-
-                </div>
-
-
+    <div class="infos">
+        <!-- Display info only when a plant is selected -->
+        <div v-if="props.selectedPlantId" class="info-card">
+            <div v-if="getSelectedPlant()" class="text-info">
+                <p class="info-title">Méthode recommandée:</p>
+                <p>{{ getSelectedPlant().methodesReco }}</p>
+                
+                <p class="info-title">Période de semis:</p>
+                <p>{{ getSelectedPlant().periodeSemis }}</p>
+                
+                <p class="info-title">Température idéale:</p>
+                <p>{{ getSelectedPlant().temperatureMin }}°C - {{ getSelectedPlant().temperatireMax }}°C</p>
+                
+                <p class="info-title">Conditions de culture:</p>
+                <p>{{ getSelectedPlant().conditionCulture }}</p>
             </div>
+            <div v-else class="not-found">
+                Informations non disponibles
+            </div>
+        </div>
+        <div v-else class="no-selection">
+            <p>Veuillez sélectionner un semis pour voir les informations détaillées</p>
         </div>
     </div>
 </template>
@@ -62,11 +88,24 @@ const test = reactive([
     padding: 1rem;
 }
 
-
-.texte-info {
-    padding: 1rem;
-    margin: 30px;
-    background-color: #973636;
+.text-info {
+    padding: 0.5rem;
 }
 
+.info-title {
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    color: #95bd75;
+}
+
+.no-selection, .not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: #888;
+    font-style: italic;
+    text-align: center;
+}
 </style>
