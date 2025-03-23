@@ -24,5 +24,6 @@ logs
 .env.*
 !.env.example
 
+venv/
 
 __pycache__

@@ -6,9 +6,10 @@ definePageMeta({
 
 import Header_title from "~/components/header_title.vue";
 import indicators from "~/components/indicators.vue";
-import swichMode from "~/components/switch_mode.vue";
 import ContentSemis from "~/components/content_semis.vue";
 import navbar from "~/components/navbar.vue";
+import blocSemis from "~/components/bloc_semis.vue";
+import blocInfos from "~/components/infos_semis.vue";
 import { ref } from 'vue';
 import { useAuth } from '~/composables/useAuth';
 import { useRouter } from 'vue-router';
@@ -41,9 +42,13 @@ const handleLogout = () => {
     </div>
     <div class="content">
       <div class="main">
-        <div class="swich-mode">
-          <swichMode title="Mode de gestion automatique" subtitle="Contrôle de l'arrosage" />
+
+        <div class="container-etagere-info">
+          <blocSemis/>
+          <blocInfos/>
         </div>
+        
+
         <div class="redirect">
           <button
             type="button"
@@ -92,6 +97,11 @@ const handleLogout = () => {
 </template>
 
 <style scoped>
+.container-etagere-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .wrapper_page {
   display: flex;
   flex-direction: column;
