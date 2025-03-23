@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { reactive, ref, watch } from 'vue';
 
 // Plants for plantation management section
 const plants = reactive([
@@ -27,27 +28,48 @@ const plants = reactive([
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
     },
-
 ]);
 
+// Selected plant ID with prop for external control
+const props = defineProps({
+    externalSelectedId: {
+        type: Number,
+        default: null
+    }
+});
 
-// Function to edit plant details
+// Watch for external changes to keep local state in sync
+const selectedPlantId = ref(props.externalSelectedId);
+
+watch(() => props.externalSelectedId, (newValue) => {
+    selectedPlantId.value = newValue;
+});
+
+// Emit events to parent
+const emit = defineEmits(['plantSelected']);
+
+// Function to handle plant selection
 const affichPlant = (index) => {
-    alert(`Plus d'informations sur : ${plants[index].name}`);
-    // Here you would open a modal or navigate to edit screen
+    selectedPlantId.value = plants[index].id;
+    emit('plantSelected', plants[index].id);
 };
-
 </script>
 
 <template>
   <div class="plants-grid" >
-      <div class="plant-card" v-for="(plant, index) in plants" :key="index" >
+      <div 
+        class="plant-card" 
+        v-for="(plant, index) in plants" 
+        :key="index"
+        :class="{ 'active-card': selectedPlantId === plant.id }"
+        @click.stop="affichPlant(index)"
+      >
           <div class="plant-header">{{ plant.name }}</div>
           <div class="plant-info text-blue-600/100">
               <p>Planté le : {{ plant.plantedDate }}</p>
               <p>Durée de germination : {{ plant.dureeGermination }}</p>
           
-              <button class="afficher-plant-btn" @click="affichPlant(index)">
+              <button class="afficher-plant-btn" @click.stop="affichPlant(index)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14"><!-- Icon from Streamline by Streamline - https://creativecommons.org/licenses/by/4.0/ -->
                   <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7 13.5a6.5 6.5 0 1 0 0-13a6.5 6.5 0 0 0 0 13M7 4v6M4 7h6"></path>
                 </svg>                            
@@ -74,6 +96,9 @@ const affichPlant = (index) => {
     overflow: hidden;
     margin: 0.6rem;
     box-shadow: 1px 3px 3px 1px #d8d8d8;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid transparent;
 }
 
 .plant-header {
@@ -128,5 +153,12 @@ h3 {
         /* max-width: 100px; */
     }
 }
+
+.active-card {
+    border: 5px solid #95bd75;
+    box-shadow: 0 0 8px rgba(149, 189, 117, 0.6);
+    transform: translateY(-2px);
+}
+
 </style>
 

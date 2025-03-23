@@ -10,13 +10,40 @@ import ContentSemis from "~/components/content_semis.vue";
 import navbar from "~/components/navbar.vue";
 import blocSemis from "~/components/bloc_semis.vue";
 import blocInfos from "~/components/infos_semis.vue";
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useAuth } from '~/composables/useAuth';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const { user, logout } = useAuth();
 const contentSemisRef = ref(null);
+const semisContainerRef = ref(null);
+
+// Add a ref to track the selected plant
+const selectedPlantId = ref(null);
+
+// Handle plant selection from blocSemis
+const handlePlantSelected = (plantId) => {
+  selectedPlantId.value = plantId;
+};
+
+// Handle click outside of the semis container
+const handleClickOutside = (event) => {
+  // Check if the semis container exists and if the click is outside of it
+  if (semisContainerRef.value && !semisContainerRef.value.contains(event.target)) {
+    // Reset the selected plant
+    selectedPlantId.value = null;
+  }
+};
+
+// Add and remove event listeners
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 
 const changeView = (view) => {
   if (contentSemisRef.value) {
@@ -43,9 +70,12 @@ const handleLogout = () => {
     <div class="content">
       <div class="main">
 
-        <div class="container-etagere-info">
-          <blocSemis/>
-          <blocInfos/>
+        <div class="container-etagere-info" ref="semisContainerRef">
+          <blocSemis 
+            @plant-selected="handlePlantSelected" 
+            :external-selected-id="selectedPlantId" 
+          />
+          <blocInfos :selected-plant-id="selectedPlantId" />
         </div>
         
 
