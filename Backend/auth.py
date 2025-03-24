@@ -58,6 +58,12 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     username: Optional[str] = None
 
+class UserUpdate(BaseModel):
+    email: Optional[EmailStr] = None
+    password: Optional[str] = Field(None, min_length=6)
+    disabled: Optional[bool] = None
+    role: Optional[str] = None
+
 # Helper functions
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
@@ -170,3 +176,163 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 @auth_router.get("/me", response_model=User)
 async def read_users_me(current_user: User = Depends(get_current_active_user)):
     return current_user
+
+# Route pour mettre à jour un utilisateur
+@auth_router.put("/users/{username}", response_model=User)
+async def update_user(
+    username: str, 
+    user_update: UserUpdate, 
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncIOMotorDatabase = Depends(get_database)
+):
+    # Vérifier les permissions: admins uniquement peuvent modifier les autres utilisateurs
+    if current_user.username != username and current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not enough permissions"
+        )
+    
+    # Vérifier si l'utilisateur existe
+    user_db = await get_user(db, username)
+    if not user_db:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User {username} not found"
+        )
+    
+    # Construire la mise à jour
+    update_data = {}
+    if user_update.email:
+        # Vérifier si l'email est déjà utilisé par un autre utilisateur
+        existing_email = await db.users.find_one({"email": user_update.email, "username": {"$ne": username}})
+        if existing_email:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Email already registered to another user"
+            )
+        update_data["email"] = user_update.email
+    
+    if user_update.password:
+        update_data["hashed_password"] = get_password_hash(user_update.password)
+    
+    # Seuls les admins peuvent modifier ces champs
+    if current_user.role == "admin":
+        if user_update.disabled is not None:
+            update_data["disabled"] = user_update.disabled
+        
+        if user_update.role:
+            update_data["role"] = user_update.role
+    
+    # Mettre à jour l'utilisateur s'il y a des modifications
+    if update_data:
+        await db.users.update_one(
+            {"username": username},
+            {"$set": update_data}
+        )
+    
+    # Récupérer et retourner l'utilisateur mis à jour
+    updated_user = await get_user(db, username)
+    return User(
+        username=updated_user.username,
+        email=updated_user.email,
+        disabled=updated_user.disabled,
+        role=updated_user.role
+    )
+
+# Route pour supprimer un utilisateur
+@auth_router.delete("/users/{username}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_user(
+    username: str,
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncIOMotorDatabase = Depends(get_database)
+):
+    # Vérifier les permissions: admins uniquement peuvent supprimer les autres utilisateurs
+    if current_user.username != username and current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not enough permissions"
+        )
+    
+    # Vérifier si l'utilisateur existe
+    user = await get_user(db, username)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User {username} not found"
+        )
+    
+    # Empêcher la suppression du dernier admin
+    if user.role == "admin":
+        admin_count = await db.users.count_documents({"role": "admin"})
+        if admin_count <= 1:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Cannot delete the last admin user"
+            )
+    
+    # Supprimer l'utilisateur
+    result = await db.users.delete_one({"username": username})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to delete user"
+        )
+    
+    return None  # 204 No Content, pas besoin de retourner de données
+
+# Route pour lister tous les utilisateurs (admin uniquement)
+@auth_router.get("/users", response_model=list[User])
+async def list_users(
+    skip: int = 0, 
+    limit: int = 100,
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncIOMotorDatabase = Depends(get_database)
+):
+    # Vérifier que c'est un admin
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not enough permissions"
+        )
+    
+    users = []
+    cursor = db.users.find().skip(skip).limit(limit)
+    async for user_doc in cursor:
+        user = UserInDB(**user_doc)
+        users.append(User(
+            username=user.username,
+            email=user.email,
+            disabled=user.disabled,
+            role=user.role
+        ))
+    
+    return users
+
+# Route pour récupérer un utilisateur spécifique
+@auth_router.get("/users/{username}", response_model=User)
+async def get_user_by_username(
+    username: str,
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncIOMotorDatabase = Depends(get_database)
+):
+    # Vérifier les permissions: seul l'utilisateur lui-même ou un admin peut voir les détails
+    if current_user.username != username and current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not enough permissions"
+        )
+    
+    user = await get_user(db, username)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User {username} not found"
+        )
+    
+    return User(
+        username=user.username,
+        email=user.email,
+        disabled=user.disabled,
+        role=user.role
+    )

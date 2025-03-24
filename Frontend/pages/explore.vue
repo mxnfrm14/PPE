@@ -39,6 +39,11 @@
                                 @click="activeTab = 'create'">
                                 Créer un utilisateur
                             </button>
+                            <button class="tab-button" :class="{ active: activeTab === 'edit' && editingUser }"
+                                @click="activeTab = 'edit'" 
+                                :disabled="!editingUser">
+                                Modifier un utilisateur
+                            </button>
                             <button class="tab-button" :class="{ active: activeTab === 'list' }"
                                 @click="activeTab = 'list'">
                                 Liste des utilisateurs
@@ -88,6 +93,49 @@
                             </button>
                         </form>
 
+                        <!-- Edit User Form -->
+                        <form v-if="activeTab === 'edit' && editingUser" @submit.prevent="updateUser" class="form">
+                            <div class="form-group">
+                                <label for="edit-username">Nom d'utilisateur</label>
+                                <input type="text" id="edit-username" v-model="editingUser.username" required disabled
+                                    placeholder="Nom d'utilisateur" />
+                                <small>Le nom d'utilisateur ne peut pas être modifié</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-email">Email</label>
+                                <input type="email" id="edit-email" v-model="editingUser.email" required
+                                    placeholder="Entrez une adresse email" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-password">Nouveau mot de passe (laisser vide pour ne pas changer)</label>
+                                <input type="password" id="edit-password" v-model="editingUser.password"
+                                    placeholder="Entrez un nouveau mot de passe" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="edit-role">Rôle</label>
+                                <select id="edit-role" v-model="editingUser.role">
+                                    <option value="user">Utilisateur</option>
+                                    <option value="admin">Administrateur</option>
+                                </select>
+                            </div>
+
+                            <div class="error-message" v-if="error">
+                                {{ error }}
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="action-button" :disabled="isUpdatingUser">
+                                    {{ isUpdatingUser ? 'Mise à jour en cours...' : 'Mettre à jour l\'utilisateur' }}
+                                </button>
+                                <button type="button" class="cancel-button" @click="cancelEdit">
+                                    Annuler
+                                </button>
+                            </div>
+                        </form>
+
                         <!-- User List -->
                         <div v-if="activeTab === 'list'" class="user-list">
                             <div v-if="isLoadingUsers" class="loading">Chargement des utilisateurs...</div>
@@ -106,10 +154,10 @@
                                         <td>{{ user.email }}</td>
                                         <td><span class="role-badge" :class="user.role">{{ user.role }}</span></td>
                                         <td class="actions">
-                                            <button class="action-icon edit">
+                                            <button class="action-icon edit" @click="editUser(user)">
                                                 <span>Modifier</span>
                                             </button>
-                                            <button class="action-icon delete">
+                                            <button class="action-icon delete" @click="confirmDeleteUser(user)">
                                                 <span>Supprimer</span>
                                             </button>
                                         </td>
@@ -130,18 +178,33 @@
                 </div>
             </div>
         </div>
+
+        <!-- Delete confirmation modal -->
+        <div v-if="showDeleteConfirm" class="modal-overlay">
+            <div class="modal-content">
+                <h3>Confirmer la suppression</h3>
+                <p>Êtes-vous sûr de vouloir supprimer l'utilisateur <strong>{{ userToDelete?.username }}</strong> ?</p>
+                <p class="warning">Cette action est irréversible.</p>
+                
+                <div class="modal-actions">
+                    <button class="action-button delete-button" @click="deleteUser" :disabled="isDeleting">
+                        {{ isDeleting ? 'Suppression...' : 'Supprimer' }}
+                    </button>
+                    <button class="cancel-button" @click="cancelDelete">Annuler</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import Header_title from '~/components/header_title.vue';
 import navbar from '~/components/navbar.vue'; // Maintenant c'est la navbar verticale
 
 definePageMeta({
     middleware: ['auth']
 });
-
 
 // États de l'interface
 const isLoading = ref(false);
@@ -161,6 +224,14 @@ const isCreatingUser = ref(false);
 const userCreationResult = ref(null);
 const users = ref([]);
 const isLoadingUsers = ref(false);
+
+// Ajouter ces nouveaux états
+const editingUser = ref(null);
+const showDeleteConfirm = ref(false);
+const userToDelete = ref(null);
+const isUpdatingUser = ref(false);
+const updateResult = ref(null);
+const isDeleting = ref(false);
 
 // Fonction pour tester la connexion à MongoDB
 const testConnection = async () => {
@@ -186,6 +257,7 @@ const testConnection = async () => {
 };
 
 // Fonction pour créer un utilisateur
+// Fonction pour créer un utilisateur
 const createUser = async () => {
     if (!newUser.value.username) {
         error.value = 'Le nom d\'utilisateur est requis';
@@ -202,22 +274,31 @@ const createUser = async () => {
     error.value = null;
 
     try {
+        // 1. Structurer les données correctement pour l'API
         const userData = {
             username: newUser.value.username,
             email: newUser.value.email,
             password: newUser.value.password,
-            role: newUser.value.role
+            // Assurez-vous que le rôle est une chaîne valide
+            role: newUser.value.role || 'user'
         };
 
+        // 2. Utiliser le bon chemin d'API (sans le préfixe /api si votre proxy le gère)
         const response = await $fetch('/api/auth/register', {
             method: 'POST',
-            body: userData
+            body: userData,
+            // 3. Option pour obtenir plus de détails sur l'erreur
+            onResponseError({ response }) {
+                console.error("Détails de l'erreur:", response._data);
+                throw new Error(response._data?.detail || 'Erreur lors de la création de l\'utilisateur');
+            }
         });
 
+        // 4. Traitement de la réponse
         userCreationResult.value = {
             status: 'success',
             message: 'Utilisateur créé avec succès',
-            user_id: response.id || response.user_id
+            user_id: response.id || response._id || response.user_id
         };
 
         // Réinitialiser le formulaire en cas de succès
@@ -234,10 +315,12 @@ const createUser = async () => {
             await fetchUsers();
         }
     } catch (err) {
+        console.error('Erreur complète:', err);
+        // 5. Message d'erreur plus descriptif
         error.value = err.message || 'Une erreur s\'est produite lors de la création de l\'utilisateur';
         userCreationResult.value = {
             status: 'error',
-            message: 'Échec de la création de l\'utilisateur'
+            message: error.value
         };
     } finally {
         isCreatingUser.value = false;
@@ -247,17 +330,141 @@ const createUser = async () => {
 // Fonction pour charger la liste des utilisateurs
 const fetchUsers = async () => {
     isLoadingUsers.value = true;
-
+    
     try {
-        const response = await $fetch('/api/users', {
-            method: 'GET'
+        // Récupérer le token depuis useAuth
+        const { token } = useAuth();
+        
+        const response = await $fetch('/api/auth/users', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token.value}`
+            }
         });
-        users.value = response.users || [];
+        
+        users.value = response || [];
     } catch (err) {
         console.error('Erreur lors du chargement des utilisateurs:', err);
         users.value = [];
+        error.value = err.message || 'Erreur lors du chargement des utilisateurs';
     } finally {
         isLoadingUsers.value = false;
+    }
+};
+
+const editUser = (user) => {
+    // Copier l'utilisateur pour éviter de modifier directement les données
+    editingUser.value = {
+        username: user.username,
+        email: user.email,
+        password: '', // Vide par défaut, ne pas afficher le mot de passe actuel
+        role: user.role
+    };
+    activeTab.value = 'edit'; // Basculer vers l'onglet d'édition
+};
+
+// Méthode pour annuler l'édition
+const cancelEdit = () => {
+    editingUser.value = null;
+    error.value = null;
+    activeTab.value = 'list'; // Retourner à la liste
+};
+
+// Méthode pour mettre à jour un utilisateur
+const updateUser = async () => {
+    if (!editingUser.value) return;
+    
+    isUpdatingUser.value = true;
+    error.value = null;
+    updateResult.value = null;
+    
+    try {
+        const updateData = {
+            email: editingUser.value.email,
+            role: editingUser.value.role
+        };
+        
+        // N'inclure le mot de passe que s'il est fourni
+        if (editingUser.value.password) {
+            updateData.password = editingUser.value.password;
+        }
+        
+        // Récupérer le token depuis useAuth
+        const { token } = useAuth();
+        
+        const response = await $fetch(`/api/auth/users/${editingUser.value.username}`, {
+            method: 'PUT',
+            body: updateData,
+            headers: {
+                'Authorization': `Bearer ${token.value}`
+            }
+        });
+        
+        // Notification de succès
+        updateResult.value = {
+            status: 'success',
+            message: `Utilisateur ${editingUser.value.username} mis à jour avec succès`
+        };
+        
+        // Recharger la liste et revenir à celle-ci
+        await fetchUsers();
+        activeTab.value = 'list';
+        editingUser.value = null;
+    } catch (err) {
+        error.value = err.message || 'Erreur lors de la mise à jour de l\'utilisateur';
+    } finally {
+        isUpdatingUser.value = false;
+    }
+};
+
+// Méthode pour afficher la confirmation de suppression
+const confirmDeleteUser = (user) => {
+    userToDelete.value = user;
+    showDeleteConfirm.value = true;
+};
+
+// Méthode pour annuler la suppression
+const cancelDelete = () => {
+    userToDelete.value = null;
+    showDeleteConfirm.value = false;
+};
+
+// Méthode pour supprimer un utilisateur
+const deleteUser = async () => {
+    if (!userToDelete.value) return;
+    
+    isDeleting.value = true;
+    error.value = null;
+    
+    try {
+        // Récupérer le token depuis useAuth
+        const { token } = useAuth();
+        
+        await $fetch(`/api/auth/users/${userToDelete.value.username}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token.value}`
+            }
+        });
+        
+        // Notification et rafraîchissement
+        userCreationResult.value = {
+            status: 'success',
+            message: `Utilisateur ${userToDelete.value.username} supprimé avec succès`
+        };
+        
+        // Masquer la modale et recharger la liste
+        showDeleteConfirm.value = false;
+        userToDelete.value = null;
+        await fetchUsers();
+    } catch (err) {
+        error.value = err.message || 'Erreur lors de la suppression de l\'utilisateur';
+        userCreationResult.value = {
+            status: 'error',
+            message: `Échec de la suppression: ${error.value}`
+        };
+    } finally {
+        isDeleting.value = false;
     }
 };
 
@@ -527,6 +734,55 @@ li {
     font-family: "Aeonik-Regular";
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.delete-button:hover:not(:disabled) {
+    background-color: #e53935;
+}
+
+.cancel-button {
+    background-color: #ccc;
+}
+
+.cancel-button:hover:not(:disabled) {
+    background-color: #b3b3b3;
+}
+
+.warning {
+    color: #f44336;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .wrapper_page {
         flex-direction: column;
@@ -543,5 +799,81 @@ li {
     .content {
         margin-left: 0;
     }
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+    font-family: "Aeonik-Bold";
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.warning {
+    color: #f44336;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.delete-button {
+    background-color: #f44336;
+}
+
+.delete-button:hover:not(:disabled) {
+    background-color: #d32f2f;
+}
+
+.cancel-button {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-family: "Aeonik-Bold";
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #d5d5d5;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+small {
+    display: block;
+    color: #757575;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
 }
 </style>
