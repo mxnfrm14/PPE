@@ -70,6 +70,21 @@ const handleLogout = () => {
     <div class="content">
       <div class="main">
 
+        <div class="container-temperatures">
+          <indicators
+            iconBackgroundColor="#95BD75"
+            iconPath="/assets/images/thermometer.png"
+            subtitle=" "
+            title="Température serre :"
+          />
+          <indicators
+            iconBackgroundColor="#d8d8d8"
+            iconPath="/assets/images/thermometer.png"
+            subtitle=" "
+            title="Température système :"
+          />
+        </div>
+
         <div class="container-etagere-info" ref="semisContainerRef">
           <blocSemis 
             @plant-selected="handlePlantSelected" 
@@ -127,6 +142,12 @@ const handleLogout = () => {
 </template>
 
 <style scoped>
+.container-temperatures {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
 .container-etagere-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
