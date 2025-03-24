@@ -9,6 +9,7 @@ const props = defineProps({
     }
 });
 
+
 const test = reactive([
     {
         id:1,
@@ -31,7 +32,7 @@ const test = reactive([
         periodeSemis: "mars à juillet",
         temperatureMin: 15,
         temperatireMax: 20,
-        methodesReco: "CA MARCHE godets profonds (10-12 cm), espacer 2-3 graines puis les recouvrir",
+        methodesReco: "id2 godets profonds (10-12 cm), espacer 2-3 graines puis les recouvrir",
         conditionCulture:"Sol : legerement enrichi (compost ou fertilisant). Ameubli, drainant et peu caillouteux à sablonneux. \nBesoin en arrosage : régulier, le sol doit rester frais et humide",
         txHumidReco: 70, /* en % */
         txHumidMesure: 80,
@@ -61,6 +62,16 @@ const getSelectedPlant = () => {
                 
                 <p class="info-title">Conditions de culture:</p>
                 <p>{{ getSelectedPlant().conditionCulture }}</p>
+                <div class="centrer">
+                    <button class="arrosage-plant-btn" @click.stop="affichPlant(index)"
+                    @click="changeView('arrosage')" > 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 14 14"><!-- Icon from Streamline by Streamline - https://creativecommons.org/licenses/by/4.0/ -->
+                            <path fill=#5fcaf2 stroke=#5fcaf2 stroke-linecap="round" stroke-linejoin="round" d="M11.5 9C11.5 6.51 7 .5 7 .5S2.5 6.51 2.5 9a4.5 4.5 0 0 0 9 0Z"/>
+                        </svg>                    
+                        Arrosage
+                    </button>
+                </div>
+                
             </div>
             <div v-else class="not-found">
                 Informations non disponibles
@@ -107,5 +118,27 @@ const getSelectedPlant = () => {
     color: #888;
     font-style: italic;
     text-align: center;
+}
+
+.arrosage-plant-btn {
+    margin-top: 1rem;
+    background-color: #f0f0f0;
+    border: 2px solid #5fcaf2;
+    color: #3c849f;
+    border-radius: 0.8rem;
+    padding: 0.8rem 0.8rem;
+    font-size: 0.97rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 8rem;
+}
+
+.centrer{
+    margin-top: 1rem;
+    align-items: center;
+    justify-items: center;
 }
 </style>

@@ -28,6 +28,24 @@ const plants = reactive([
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
     },
+    {
+        id:4,
+        name: 'Carotte',
+        plantedDate: '15 février',
+        dureeGermination : "2 à 4 mois",
+    },
+    {
+        id:5,
+        name: 'Carotte',
+        plantedDate: '15 février',
+        dureeGermination : "2 à 4 mois",
+    },
+    {
+        id:6,
+        name: 'Carotte',
+        plantedDate: '15 février',
+        dureeGermination : "2 à 4 mois",
+    },
 ]);
 
 // Selected plant ID with prop for external control
@@ -67,14 +85,14 @@ const affichPlant = (index) => {
           <div class="plant-header">{{ plant.name }}</div>
           <div class="plant-info text-blue-600/100">
               <p>Planté le : {{ plant.plantedDate }}</p>
-              <p>Durée de germination : {{ plant.dureeGermination }}</p>
+              <!-- <p>Durée de germination : {{ plant.dureeGermination }}</p> -->
           
               <button class="afficher-plant-btn" @click.stop="affichPlant(index)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14"><!-- Icon from Streamline by Streamline - https://creativecommons.org/licenses/by/4.0/ -->
                   <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7 13.5a6.5 6.5 0 1 0 0-13a6.5 6.5 0 0 0 0 13M7 4v6M4 7h6"></path>
-                </svg>                            
+                </svg>                        
                 Afficher plus
-              </button>
+            </button>
           </div>
         </div>  
 </div>
