@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
 
 // Accept the selected plant ID as a prop
 const props = defineProps({
@@ -9,11 +9,10 @@ const props = defineProps({
     }
 });
 
-
 const test = reactive([
     {
         id:1,
-        name: 'Carotte',
+        name: 'Carotte (1)',
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
         periodeSemis: "mars à juillet",
@@ -26,7 +25,7 @@ const test = reactive([
     },
     {
         id:2,
-        name: 'AAA',
+        name: 'AAA (2)',
         plantedDate: 'AAAAA',
         dureeGermination : "2 à 4 mois",
         periodeSemis: "mars à juillet",
@@ -44,6 +43,16 @@ const getSelectedPlant = () => {
     if (!props.selectedPlantId) return null;
     return test.find(plant => plant.id === props.selectedPlantId);
 };
+
+
+// Function to water plant manually
+const waterPlantManually = () => {
+    // Here you would call your API to trigger watering
+    alert(`Arrosage manuel de ${getSelectedPlant().name} déclenché`);
+
+
+};
+
 </script>
 
 <template>
@@ -56,17 +65,25 @@ const getSelectedPlant = () => {
                 
                 <p class="info-title">Période de semis:</p>
                 <p>{{ getSelectedPlant().periodeSemis }}</p>
+
+                <p class="info-title">Durée de germination:</p>
+                <p>{{ getSelectedPlant()?.dureeGermination }}</p>
                 
                 <p class="info-title">Température idéale:</p>
                 <p>{{ getSelectedPlant().temperatureMin }}°C - {{ getSelectedPlant().temperatireMax }}°C</p>
                 
                 <p class="info-title">Conditions de culture:</p>
                 <p>{{ getSelectedPlant().conditionCulture }}</p>
+
+                <p class="info-title">Taux humidité recommandé:</p>
+                <p>{{ getSelectedPlant().txHumidReco }} %</p>
+
+                <p class="info-title">Taux humidité mesuré:</p>
+                <p>{{ getSelectedPlant()?.txHumidMesure }} %</p>
                 <div class="centrer">
-                    <button class="arrosage-plant-btn" @click.stop="affichPlant(index)"
-                    @click="changeView('arrosage')" > 
+                    <button class="arrosage-plant-btn" @click="waterPlantManually" > 
                         <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 14 14"><!-- Icon from Streamline by Streamline - https://creativecommons.org/licenses/by/4.0/ -->
-                            <path fill=#5fcaf2 stroke=#5fcaf2 stroke-linecap="round" stroke-linejoin="round" d="M11.5 9C11.5 6.51 7 .5 7 .5S2.5 6.51 2.5 9a4.5 4.5 0 0 0 9 0Z"/>
+                            <path fill="none" stroke=white stroke-linecap="round" stroke-linejoin="round" d="M11.5 9C11.5 6.51 7 .5 7 .5S2.5 6.51 2.5 9a4.5 4.5 0 0 0 9 0Z"/>
                         </svg>                    
                         Arrosage
                     </button>
@@ -122,18 +139,19 @@ const getSelectedPlant = () => {
 
 .arrosage-plant-btn {
     margin-top: 1rem;
-    background-color: #f0f0f0;
-    border: 2px solid #5fcaf2;
-    color: #3c849f;
-    border-radius: 0.8rem;
-    padding: 0.8rem 0.8rem;
-    font-size: 0.97rem;
     display: flex;
     align-items: center;
     gap: 0.6rem;
     cursor: pointer;
     transition: background-color 0.2s;
     width: 8rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+
 }
 
 .centrer{

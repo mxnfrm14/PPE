@@ -5,7 +5,7 @@ import { reactive, ref, watch } from 'vue';
 const plants = reactive([
     {
         id:1,
-        name: 'Carotte',
+        name: 'Carotte 1',
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
         periodeSemis: "mars à juillet",
@@ -18,31 +18,49 @@ const plants = reactive([
     },
     {
         id:2,
-        name: 'Carotte',
+        name: 'Carotte 2',
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
     },
     {
         id:3,
-        name: 'Carotte',
+        name: 'Carotte 3',
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
     },
     {
         id:4,
-        name: 'Carotte',
+        name: 'Carotte 4',
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
     },
     {
         id:5,
-        name: 'Carotte',
+        name: 'Tomate 5',
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
     },
     {
         id:6,
-        name: 'Carotte',
+        name: 'Carotte 6',
+        plantedDate: '15 février',
+        dureeGermination : "2 à 4 mois",
+    },
+    {
+        id:7,
+        name: 'Carotte 7',
+        plantedDate: '15 février',
+        dureeGermination : "2 à 4 mois",
+    },
+    {
+        id:8,
+        name: 'Carotte 8',
+        plantedDate: '15 février',
+        dureeGermination : "2 à 4 mois",
+    },
+    {
+        id:9,
+        name: 'Salade 9',
         plantedDate: '15 février',
         dureeGermination : "2 à 4 mois",
     },

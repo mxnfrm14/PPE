@@ -10,6 +10,7 @@ import ContentSemis from "~/components/content_semis.vue";
 import navbar from "~/components/navbar.vue";
 import blocSemis from "~/components/bloc_semis.vue";
 import blocInfos from "~/components/infos_semis.vue";
+import temperature from "~/components/temperature.vue";
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useAuth } from '~/composables/useAuth';
 import { useRouter } from 'vue-router';
@@ -61,75 +62,38 @@ const handleLogout = () => {
   <div class="wrapper_page">
     <navbar></navbar>
     <div class="header_bis">
-      <header_title
-        title="Gestion des Semis"
-        subtitle="Contrôle et suivi"
-        class="header_title"
-      ></header_title>
+      <header_title title="Gestion des Semis" subtitle="Contrôle et suivi" class="header_title"></header_title>
     </div>
     <div class="content">
       <div class="main">
 
         <div class="container-temperatures">
-          <indicators
-            iconBackgroundColor="#95BD75"
-            iconPath="/assets/images/thermometer.png"
-            subtitle=" "
-            title="Température serre :"
-          />
-          <indicators
-            iconBackgroundColor="#d8d8d8"
-            iconPath="/assets/images/thermometer.png"
-            subtitle=" "
-            title="Température système :"
-          />
+          <temperature title="Température serre" />
+          <temperature title="Température composants" />
+
+
         </div>
 
         <div class="container-etagere-info" ref="semisContainerRef">
-          <blocSemis 
-            @plant-selected="handlePlantSelected" 
-            :external-selected-id="selectedPlantId" 
-          />
+          <blocSemis @plant-selected="handlePlantSelected" :external-selected-id="selectedPlantId" />
           <blocInfos :selected-plant-id="selectedPlantId" />
         </div>
-        
+
 
         <div class="redirect">
-          <button
-            type="button"
-            class="Arrosage"
-            @click="changeView('arrosage')"
-          >
-            <indicators
-              iconBackgroundColor="#95BD75"
-              iconPath="/assets/images/watering-can-plant.png"
-              subtitle=" "
-              title="Arrosage des semis"
-            />
+          <button type="button" class="Arrosage" @click="changeView('arrosage')">
+            <indicators iconBackgroundColor="#95BD75" iconPath="/assets/images/watering-can-plant.png" subtitle=" "
+              title="Arrosage des semis" />
           </button>
-          <button
-            type="button"
-            class="Température"
-            @click="changeView('temperature')"
-          >
-          <indicators
-            iconBackgroundColor="#95BD75"
-            iconPath="/assets/images/thermometer.png"
-            subtitle=" "
-            title="Température"
-          /></button>
+          <button type="button" class="Température" @click="changeView('temperature')">
+            <indicators iconBackgroundColor="#95BD75" iconPath="/assets/images/thermometer.png" subtitle=" "
+              title="Température" />
+          </button>
 
-          <button
-            type="button"
-            class="plantations"
-            @click="changeView('plantations')"
-          >
-          <indicators
-            iconBackgroundColor="#95BD75"
-            iconPath="/assets/images/potted-plant.png"
-            subtitle=" "
-            title="Gérer les plantations"
-          /></button>
+          <button type="button" class="plantations" @click="changeView('plantations')">
+            <indicators iconBackgroundColor="#95BD75" iconPath="/assets/images/potted-plant.png" subtitle=" "
+              title="Gérer les plantations" />
+          </button>
         </div>
 
         <div class="content-section">
@@ -143,14 +107,14 @@ const handleLogout = () => {
 
 <style scoped>
 .container-temperatures {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }
 
 .container-etagere-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .wrapper_page {
@@ -220,7 +184,7 @@ button:hover {
   .content {
     flex-direction: column;
   }
-  
+
   .side-calendar {
     flex: 1;
     width: 100%;
