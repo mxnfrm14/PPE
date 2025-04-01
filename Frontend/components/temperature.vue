@@ -8,12 +8,21 @@
             <div class="error-message">{{ error }}</div>
         </template>
         
-        <template v-else-if="temperature !== null">
-            <div class="stat-value">{{ temperature }}°C</div>
+        <template v-else-if="temperatureData">
+            <div class="stat-value">{{ temperatureData.temperature }}°C</div>
+            
+            <div class="status-info" :class="temperatureData.status">
+                <span v-if="temperatureData.status === 'simulated'">(Simulé)</span>
+                <span v-else-if="temperatureData.status === 'cached'">(Mise en cache)</span>
+            </div>
+            
+            <div class="timestamp">
+                {{ formatTimestamp(temperatureData.timestamp) }}
+            </div>
+            
             <div class="temp-range">
                 <span>Min: 18°C</span>
-                <span>Max: 28°C</span> 
-                <!-- on peut mettre la derniere date enregistrer -->
+                <span>Max: 28°C</span>
             </div>
         </template>
         
@@ -32,27 +41,42 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    refreshInterval: {
+        type: Number,
+        default: 30000, // 30 secondes par défaut
+    }
 });
 
 const { authenticatedFetch } = useAuth();
-const temperature = ref(null);
+const temperatureData = ref(null);
 const isLoading = ref(false);
 const error = ref(null);
+let intervalId = null;
+
+// Formater l'horodatage pour une meilleure lisibilité
+const formatTimestamp = (timestamp) => {
+    if (!timestamp) return '';
+    
+    const date = new Date(timestamp.replace(' ', 'T'));
+    return new Intl.DateTimeFormat('fr-FR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    }).format(date);
+};
 
 const fetchTemperature = async () => {
     isLoading.value = true;
     error.value = null;
     
     try {
-        // Notez le préfixe /api ici
         const response = await authenticatedFetch('/api/protected/temperature');
         console.log('Données de température:', response);
         
-        if (response && 'temperature' in response) {
-            temperature.value = response.temperature;
-        } else {
-            error.value = 'Format de réponse incorrect';
-        }
+        temperatureData.value = response;
     } catch (err) {
         error.value = err.message || 'Erreur lors de la récupération de la température';
         console.error('Erreur:', err);
@@ -60,8 +84,24 @@ const fetchTemperature = async () => {
         isLoading.value = false;
     }
 };
-// Appeler la fonction au montage du composant
-onMounted(fetchTemperature);
+
+// Configuration de l'actualisation périodique
+onMounted(() => {
+    // Première récupération
+    fetchTemperature();
+    
+    // Actualisation périodique
+    if (props.refreshInterval > 0) {
+        intervalId = setInterval(fetchTemperature, props.refreshInterval);
+    }
+});
+
+// Nettoyage lors du démontage du composant
+onUnmounted(() => {
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+});
 </script>
 
 <style scoped>
@@ -78,6 +118,26 @@ onMounted(fetchTemperature);
     font-weight: bold;
     color: #333;
     margin: 0.5rem 0;
+}
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+}
+
+.status-info {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.status-info.simulated {
+    color: #ff9800;
+}
+
+.status-info.cached {
+    color: #f44336;
 }
 
 .temp-range {

@@ -16,16 +16,20 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBaseUrl: '/api', // Use /api as the base URL
+      apiBaseUrl: process.env.API_BASE_URL || 'https://ppe.tail923435.ts.net/',
     },
   },
-  nitro: {
-    devProxy: {
-      '/api': {
-        target: 'http://localhost:8000', // Backend URL
-        changeOrigin: true,
-        prependPath: false,
+  
+  // En développement, vous pourriez toujours vouloir utiliser le proxy
+  ...(process.env.NODE_ENV === 'development' ? {
+    nitro: {
+      devProxy: {
+        '/api': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+          prependPath: false,
+        },
       },
     },
-  },
+  } : {})
 })
