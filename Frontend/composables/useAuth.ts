@@ -144,6 +144,40 @@ export const useAuth = () => {
     return navigateTo("/login", { replace: true });
   };
 
+  // Fonction pour effectuer une requête authentifiée
+  const authenticatedFetch = async (url, options = {}) => {
+    if (!token.value) {
+      throw new Error("Non authentifié");
+    }
+
+    // Ajouter l'en-tête d'autorisation avec le token JWT
+    const headers = {
+      ...(options.headers || {}),
+      Authorization: `Bearer ${token.value}`,
+    };
+
+    try {
+      return await $fetch(url, {
+        ...options,
+        headers,
+      });
+    } catch (error) {
+      // Si l'erreur est 401, le token est probablement expiré
+      if (error.response?.status === 401) {
+        // Redirigez vers la page de connexion
+        isAuthenticated.value = false;
+        token.value = null;
+        if (isClient) {
+          localStorage.removeItem("auth_token");
+          localStorage.removeItem("user");
+        }
+        await navigateTo("/login");
+        throw new Error("Session expirée, veuillez vous reconnecter");
+      }
+      throw error;
+    }
+  };
+
   // Provide the auth state and methods
   return {
     user,
@@ -155,5 +189,6 @@ export const useAuth = () => {
     login,
     logout,
     fetchUserProfile,
+    authenticatedFetch,
   };
 };

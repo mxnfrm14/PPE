@@ -9,6 +9,7 @@ import json
 
 # Import the auth router
 from auth import auth_router
+from protected_routes import protected_router
 
 # Load environment variables
 load_dotenv()
@@ -39,6 +40,9 @@ async def startup_db_client():
         # Send a ping to confirm a successful connection
         await mongo_client.admin.command('ping')
         print("Pinged your deployment. You successfully connected to MongoDB!")
+        print("Routes disponibles:")
+        for route in app.routes:
+            print(f"{route.path} - {route.methods}")
     except Exception as e:
         print(e)
 
@@ -61,6 +65,8 @@ async def get_database():
 
 # Include the auth router
 app.include_router(auth_router)
+# Include the protected router
+app.include_router(protected_router)
 
 # API routes
 @app.get("/")
@@ -134,6 +140,7 @@ async def get_all_users(db=Depends(get_database)):
             "status": "error",
             "message": f"Error fetching users: {str(e)}"
         }
+
 
 # Entry point
 if __name__ == "__main__":
