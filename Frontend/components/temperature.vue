@@ -20,10 +20,10 @@
                 {{ formatTimestamp(temperatureData.timestamp) }}
             </div>
             
-            <div class="temp-range">
+            <!-- <div class="temp-range">
                 <span>Min: 18°C</span>
                 <span>Max: 28°C</span>
-            </div>
+            </div> -->
         </template>
         
         <template v-else>
@@ -110,7 +110,7 @@ onUnmounted(() => {
     border-radius: 0.8rem;
     padding: 1rem;
     flex: 1;
-    min-height: 150px;
+    min-height: 100px;
 }
 
 .stat-value {
@@ -167,5 +167,12 @@ onUnmounted(() => {
     color: #999;
     font-style: italic;
     margin: 1rem 0;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font: 'Aeonik-Medium';
 }
 </style>
