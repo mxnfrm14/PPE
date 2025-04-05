@@ -43,7 +43,7 @@ const props = defineProps({
     },
     refreshInterval: {
         type: Number,
-        default: 30000, // 30 secondes par défaut
+        default: 60000, // 30 secondes par défaut
     }
 });
 
@@ -106,6 +106,7 @@ onUnmounted(() => {
 
 <style scoped>
 .stat-card {
+    font-family: 'Aeonik-Medium', sans-serif;
     background-color: #f9f9f9;
     border-radius: 0.8rem;
     padding: 1rem;
