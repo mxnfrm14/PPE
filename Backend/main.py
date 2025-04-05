@@ -10,6 +10,7 @@ import json
 # Import the auth router
 from auth import auth_router
 from protected_routes import protected_router
+from plant import plants_router
 
 # Load environment variables
 load_dotenv()
@@ -67,6 +68,8 @@ async def get_database():
 app.include_router(auth_router)
 # Include the protected router
 app.include_router(protected_router)
+# Include the plant router
+app.include_router(plants_router)
 
 # API routes
 @app.get("/")
