@@ -134,6 +134,7 @@ onMounted(() => {
             <div class="plant-header">{{ findPlantByPosition(position).nom }}</div>
             <div class="plant-info">
               <p>Planté le : {{ formatDate(findPlantByPosition(position).date_plantation) }}</p>
+              <p>Arrosé le : {{ formatDate(findPlantByPosition(position).dernier_arrosage) }}</p>
               
               <button class="afficher-plant-btn" @click.stop="selectPlant(findPlantByPosition(position)._id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14">
