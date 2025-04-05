@@ -37,6 +37,20 @@ const selectPlant = (plantId) => {
     emit('plantSelected', plantId);
 };
 
+// Function to check if a plant has valid data
+const isValidPlant = (plant) => {
+    // Check if the plant exists and has necessary data
+    return plant && 
+           plant.nom && 
+           plant.nom.trim() !== '' && 
+           plant.date_plantation;
+};
+
+// Function to find plant by position
+const findPlantByPosition = (position) => {
+    return plants.value.find(p => p.place === position);
+};
+
 // Function to format ISO date string to readable format
 const formatDate = (dateString) => {
     if (!dateString) return 'Non défini';
@@ -108,21 +122,20 @@ onMounted(() => {
     <template v-else>
       <!-- Generate all 12 grid positions -->
       <template v-for="position in 12" :key="position">
-        <!-- Find if there's a plant for this position -->
-        <template v-if="plants.find(p => p.place === position)">
+        <!-- Find if there's a valid plant for this position -->
+        <template v-if="findPlantByPosition(position) && isValidPlant(findPlantByPosition(position))">
           <!-- Existing plant card -->
           <div 
             class="plant-card" 
-            :class="{ 'active-card': selectedPlantId === plants.find(p => p.place === position)._id }"
-            @click.stop="selectPlant(plants.find(p => p.place === position)._id)"
+            :class="{ 'active-card': selectedPlantId === findPlantByPosition(position)._id }"
+            @click.stop="selectPlant(findPlantByPosition(position)._id)"
             :style="{ gridArea: `plant-${position}` }"
           >
-            <div class="plant-header">{{ plants.find(p => p.place === position).nom }}</div>
+            <div class="plant-header">{{ findPlantByPosition(position).nom }}</div>
             <div class="plant-info">
-              <p>Planté le : {{ formatDate(plants.find(p => p.place === position).date_plantation) }}</p>
-              <p>Dernier arrosage : {{ formatDate(plants.find(p => p.place === position).dernier_arrosage) }}</p>
+              <p>Planté le : {{ formatDate(findPlantByPosition(position).date_plantation) }}</p>
               
-              <button class="afficher-plant-btn" @click.stop="selectPlant(plants.find(p => p.place === position)._id)">
+              <button class="afficher-plant-btn" @click.stop="selectPlant(findPlantByPosition(position)._id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14">
                   <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7 13.5a6.5 6.5 0 1 0 0-13a6.5 6.5 0 0 0 0 13M7 4v6M4 7h6"></path>
                 </svg>                        
@@ -147,7 +160,6 @@ onMounted(() => {
 
 <style scoped>
 .plants-grid {
-    font-family: 'Aeonik-Regular', sans-serif;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, auto);
