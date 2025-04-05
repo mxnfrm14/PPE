@@ -49,6 +49,9 @@ const props = defineProps({
     }
 });
 
+// Define emits for edit and delete actions
+const emit = defineEmits(['editPlant', 'deletePlant']);
+
 // Reactive data
 const plant = ref(null);
 const plantInfo = ref(null);
@@ -262,6 +265,22 @@ const getLastWateredAmount = () => {
     return `${formatTime(lastWatering.date_arrosage)} - ${lastWatering.quantite_eau_ml} ml`;
 };
 
+// Function to handle edit button click
+const handleEdit = () => {
+    if (plant.value) {
+        // Emit event to parent component
+        emit('editPlant', plant.value);
+    }
+};
+
+// Function to handle delete button click
+const handleDelete = () => {
+    if (plant.value) {
+        // Emit event to parent component
+        emit('deletePlant', plant.value);
+    }
+};
+
 // Load data on mount if a plant is selected
 onMounted(() => {
     if (props.selectedPlantId) {
@@ -285,10 +304,30 @@ onMounted(() => {
         
         <!-- Display info when a plant is selected and loaded -->
         <div v-else-if="props.selectedPlantId && plant" class="info-card">
-            <div class="text-info">
-                <!-- Basic plant info -->
+            <div class="info-header">
                 <h3>{{ plant.nom }}</h3>
                 
+                <!-- Edit and Delete buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn edit-btn" @click="handleEdit" title="Modifier">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                    <button class="action-btn delete-btn" @click="handleDelete" title="Supprimer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-info">
                 <!-- Stats cards for humidity and last watering -->
                 <div class="stats-container">
                     <div class="stat-card">
@@ -491,6 +530,52 @@ onMounted(() => {
     padding: 1rem;
 }
 
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 1rem;
+}
+
+.info-header h3 {
+    font-family: 'Aeonik-Medium', sans-serif;
+    color: #333;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.edit-btn {
+    color: #3498db;
+}
+
+.delete-btn {
+    color: #e74c3c;
+}
+
+.action-btn:hover {
+    background-color: #f5f5f5;
+}
+
 .text-info {
     padding: 0.5rem;
 }
@@ -517,6 +602,7 @@ h4 {
 }
 
 .info-section {
+    font-family: 'Aeonik-Regular', sans-serif;
     margin: 1.5rem 0;
 }
 

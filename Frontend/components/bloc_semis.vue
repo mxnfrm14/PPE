@@ -211,6 +211,11 @@ const handleSemisFormSubmit = async (data) => {
 onMounted(() => {
     fetchPlants();
 });
+
+// Expose methods to parent component
+defineExpose({
+    fetchPlants
+});
 </script>
 
 
@@ -334,6 +339,7 @@ onMounted(() => {
 
 <style scoped>
 .plants-grid {
+    font-family: 'Aeonik-Medium', sans-serif;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, auto);
