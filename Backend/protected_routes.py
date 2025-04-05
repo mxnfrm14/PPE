@@ -1,4 +1,3 @@
-# Créez un fichier comme protected_routes.py
 from fastapi import APIRouter, Depends
 from auth import get_current_active_user
 from temperature_service import temperature_service
