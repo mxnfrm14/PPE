@@ -13,7 +13,10 @@
         <!-- Display info when a plant is selected and loaded -->
         <div v-else-if="props.selectedPlantId && plant" class="info-card">
             <div class="info-header">
-                <h3>{{ plant.nom }}</h3>
+                <div class="plant-info">
+                    <h3>{{ plant.nom }}</h3>
+                    <div class="plantation-date">Planté le {{ formatDate(plant.date_plantation) }}</div>
+                </div>
                 
                 <!-- Edit and Delete buttons -->
                 <div class="action-buttons">
@@ -40,60 +43,6 @@
                 <div class="stats-container">
                     <HumidityCard :plantId="props.selectedPlantId" />
                     <LastWateringCard :plantId="props.selectedPlantId" />
-                </div>
-                
-                <!-- Additional info from infos collection -->
-                <div class="info-section">
-                    <div class="info-row">
-                        <span class="info-label">Date de plantation:</span>
-                        <span class="info-value">{{ formatDate(plant.date_plantation) }}</span>
-                    </div>
-                
-                    <template v-if="plantInfo">
-                        <div class="info-row">
-                            <span class="info-label">Période de semis:</span>
-                            <span class="info-value">{{ plantInfo.semisStartPeriod }} à {{ plantInfo.semisEndPeriod }}</span>
-                        </div>
-                        
-                        <div class="info-row">
-                            <span class="info-label">Durée de germination:</span>
-                            <span class="info-value">{{ plantInfo.growingDurationLow }} à {{ plantInfo.growingDurationHigh }} jours</span>
-                        </div>
-                        
-                        <div class="info-row">
-                            <span class="info-label">Température idéale:</span>
-                            <span class="info-value">{{ plantInfo.recommandedTemperatureLow }}°C - {{ plantInfo.recommandedTemperatureHigh }}°C</span>
-                        </div>
-                        
-                        <div class="info-row">
-                            <span class="info-label">Méthode recommandée:</span>
-                            <span class="info-value">
-                                <div v-for="(method, index) in plantInfo.recommandedMethods" :key="index">
-                                    {{ method }}
-                                </div>
-                            </span>
-                        </div>
-                        
-                        <div class="info-row">
-                            <span class="info-label">Sol:</span>
-                            <span class="info-value">{{ plantInfo.cultureCondition?.solType || '' }}</span>
-                        </div>
-                        
-                        <div class="info-row" v-if="plantInfo.cultureCondition?.externCondition">
-                            <span class="info-label">Conditions externes:</span>
-                            <span class="info-value">{{ plantInfo.cultureCondition.externCondition }}</span>
-                        </div>
-                        
-                        <div class="info-row">
-                            <span class="info-label">Besoin en eau:</span>
-                            <span class="info-value">{{ plantInfo.cultureCondition?.waterNeed || '' }}</span>
-                        </div>
-                        
-                        <div class="info-row">
-                            <span class="info-label">Taux humidité recommandé:</span>
-                            <span class="info-value">{{ plantInfo.recommandedHumidityLevel }}%</span>
-                        </div>
-                    </template>
                 </div>
                 
                 <!-- Full-width watering history -->
@@ -311,11 +260,22 @@ onMounted(() => {
     margin-bottom: 1rem;
 }
 
+.plant-info {
+    display: flex;
+    flex-direction: column;
+}
+
 .info-header h3 {
     font-family: 'Aeonik-Medium', sans-serif;
     color: #333;
-    margin-bottom: 0;
+    margin-bottom: 0.2rem;
     font-size: 1.2rem;
+}
+
+.plantation-date {
+    font-size: 0.85rem;
+    color: #777;
+    font-family: 'Aeonik-Regular', sans-serif;
 }
 
 .action-buttons {
