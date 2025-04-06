@@ -210,7 +210,7 @@ async def delete_semis(
         )
     
     # Delete any associated watering records
-    await db.arrosages.delete_many({"semis_id": semis_id})
+    await db.arrosages.delete_many({"plantId": semis_id})
     
     # Delete the semis
     await db.semis.delete_one({"_id": semis_obj_id})
