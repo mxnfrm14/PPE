@@ -261,9 +261,9 @@ async def get_watering_history(
             detail="Invalid semis ID format"
         )
     
-    # Fetch watering records
+    # Fetch watering records - CHANGE IS HERE - query by plantId instead of semis_id
     watering_records = []
-    cursor = db.arrosages.find({"semis_id": semis_id}).sort("date_arrosage", -1)
+    cursor = db.arrosages.find({"plantId": semis_id}).sort("dateTime", -1)
     
     async for record in cursor:
         # Convert MongoDB _id to string
@@ -280,7 +280,8 @@ async def water_plant(
 ):
     """Add a new watering record"""
     try:
-        plant_obj_id = ObjectId(watering.semis_id)
+        # Note: changed from watering.semis_id to watering.plantId to match the model
+        plant_obj_id = ObjectId(watering.plantId)
     except:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -292,7 +293,7 @@ async def water_plant(
     if not plant:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Semis with ID {watering.semis_id} not found"
+            detail=f"Semis with ID {watering.plantId} not found"
         )
     
     # Prepare the watering record
@@ -304,15 +305,23 @@ async def water_plant(
     result = await db.arrosages.insert_one(watering_record)
     
     # Update plant's last watering info and humidity level
-    # Simulate humidity increasing after watering
+    # Simulate humidity increasing after watering - adjust based on duration
     current_humidity = plant.get("txHumidMesure", 0)
-    humidity_increase = min(30, 100 - current_humidity)  # Increase by up to 30%, max 100%
+    
+    # More duration = more humidity increase, but with diminishing returns
+    base_increase = 15  # Base increase for short watering
+    max_increase = 30   # Maximum increase for long watering
+    
+    # Calculate humidity increase based on duration with diminishing returns
+    duration_factor = min(1.0, watering.duration / 30)  # Caps at 1.0 for durations >= 30 minutes
+    humidity_increase = min(base_increase + (max_increase - base_increase) * duration_factor, 
+                           100 - current_humidity)  # Ensure it doesn't exceed 100%
     
     await db.semis.update_one(
         {"_id": plant_obj_id},
         {
             "$set": {
-                "dernier_arrosage": watering.date_arrosage,
+                "dernier_arrosage": watering.dateTime,
                 "txHumidMesure": current_humidity + humidity_increase
             }
         }
