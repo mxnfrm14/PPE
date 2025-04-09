@@ -386,23 +386,6 @@ async def trigger_immediate_watering(
                 detail="Position mismatch with the plant's registered position"
             )
         
-        # Get the GPIO pin for this position
-        gpio_pin = GPIO_MAPPING.get(request.position)
-        if not gpio_pin:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"No GPIO mapping for position {request.position}"
-            )
-        
-        # Path to watering script
-        script_path = Path(__file__).parent / "scripts" / "water_plant.py"
-        
-        if not script_path.exists():
-            raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Watering script not found"
-            )
-        
         # Record watering in database first
         watering_record = {
             "plantId": request.plantId,
@@ -424,28 +407,29 @@ async def trigger_immediate_watering(
             {"$set": {"dernier_arrosage": datetime.now().isoformat()}}
         )
         
-        # Execute the watering script
+        # Path to watering script
+        script_path = Path(__file__).parent / "scripts" / "water_plant.py"
+        
+        if not script_path.exists():
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Watering script not found"
+            )
+        
+        # Execute the watering script with position directly (not GPIO pin)
         try:
-            # # Non-blocking execution with watering_id
-            # process = subprocess.Popen([
-            #     "python3", 
-            #     str(script_path), 
-            #     str(gpio_pin),
-            #     str(request.duration),
-            #     watering_id
-            # ])
-
+            # Non-blocking execution with watering_id
             process = subprocess.Popen([
                 "sudo", "python3", 
                 str(script_path), 
-                str(gpio_pin),
+                str(request.position),  # Pass position directly, not GPIO pin
                 str(request.duration),
                 watering_id
             ])
             
             return {
                 "status": "success",
-                "message": f"Watering triggered at position {request.position} (GPIO {gpio_pin}) for {request.duration} minutes",
+                "message": f"Watering triggered at position {request.position} for {request.duration} minutes",
                 "watering_id": watering_id
             }
             

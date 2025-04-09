@@ -2,7 +2,7 @@
 """
 water_plant.py - Script to control watering system GPIO pins on Raspberry Pi
 
-Usage: python3 water_plant.py <valve_gpio_pin> <duration_minutes> [watering_id]
+Usage: python3 water_plant.py <valve_position> <duration_minutes> [watering_id]
 """
 
 import sys
@@ -29,6 +29,22 @@ API_ENDPOINT = "http://localhost:8000/api/plant/watering/status/internal"
 # GPIO pin for the water pump - will be activated with any valve
 PUMP_GPIO = 6
 
+# Mapping des positions aux GPIO pins des électrovannes
+VALVE_MAPPING = {
+    1: 4,    # Position 1 -> GPIO 4
+    2: 17,   # Position 2 -> GPIO 17
+    3: 27,   # Position 3 -> GPIO 27
+    4: 22,   # Position 4 -> GPIO 22
+    5: 16,   # Position 5 -> GPIO 16 (EV5)
+    6: 5,    # Position 6 -> GPIO 5
+    7: 26,   # Position 7 -> GPIO 26
+    8: 23,   # Position 8 -> GPIO 23
+    9: 24,   # Position 9 -> GPIO 24
+    10: 25,  # Position 10 -> GPIO 25 (EV8)
+    11: 12,  # Position 11 -> GPIO 12 (EV11)
+    12: 16   # Position 12 -> GPIO 16 (partagé avec 5)
+}
+
 def setup_gpio():
     """Initialize GPIO settings"""
     GPIO.setmode(GPIO.BCM)
@@ -38,38 +54,45 @@ def cleanup():
     """Clean up GPIO pins"""
     GPIO.cleanup()
 
-def water_plant(valve_gpio_pin, duration_minutes):
+def water_plant(position, duration_minutes):
     """
-    Activate watering for the specified valve GPIO pin and pump, for the given duration
+    Activate watering for the specified position, for the given duration
     
     Args:
-        valve_gpio_pin (int): GPIO pin number for the valve to activate
+        position (int): Position number (1-12) to activate
         duration_minutes (int): Duration in minutes to keep the pins active
     """
+    if position not in VALVE_MAPPING:
+        logger.error(f"Position invalide: {position}")
+        return False
+        
+    valve_gpio_pin = VALVE_MAPPING[position]
+    logger.info(f"Position {position} correspond au GPIO {valve_gpio_pin}")
+    
     try:
-        logger.info(f"Setting up GPIO pins: valve {valve_gpio_pin} and pump {PUMP_GPIO} for watering")
+        logger.info(f"Configuration des GPIO: électrovanne {valve_gpio_pin} et pompe {PUMP_GPIO}")
         GPIO.setup(valve_gpio_pin, GPIO.OUT)
         GPIO.setup(PUMP_GPIO, GPIO.OUT)
         
-        # Turn ON both the water pump and the specific valve
-        logger.info(f"Turning ON pump (GPIO {PUMP_GPIO}) and valve (GPIO {valve_gpio_pin}) for {duration_minutes} minutes")
+        # Activation de la pompe (HIGH) et de l'électrovanne (LOW pour activer)
+        logger.info(f"Activation pompe (GPIO {PUMP_GPIO}) et électrovanne (GPIO {valve_gpio_pin}) pour {duration_minutes} minutes")
         GPIO.output(PUMP_GPIO, GPIO.HIGH)
-        GPIO.output(valve_gpio_pin, GPIO.HIGH)
+        GPIO.output(valve_gpio_pin, GPIO.LOW)  # Note: LOW pour activer conformément au code original
         
-        # Wait for the specified duration
+        # Attendre la durée spécifiée
         duration_seconds = duration_minutes * 60
         time.sleep(duration_seconds)
         
-        # Turn OFF both the water pump and the valve
-        logger.info(f"Turning OFF valve (GPIO {valve_gpio_pin}) and pump (GPIO {PUMP_GPIO})")
-        GPIO.output(valve_gpio_pin, GPIO.LOW)
+        # Désactivation de la pompe et de l'électrovanne
+        logger.info(f"Désactivation électrovanne (GPIO {valve_gpio_pin}) et pompe (GPIO {PUMP_GPIO})")
+        GPIO.output(valve_gpio_pin, GPIO.LOW)  # Maintenir LOW ou mettre HIGH selon votre configuration
         GPIO.output(PUMP_GPIO, GPIO.LOW)
         
-        logger.info(f"Watering completed successfully for valve GPIO {valve_gpio_pin}")
+        logger.info(f"Arrosage terminé avec succès pour la position {position} (GPIO {valve_gpio_pin})")
         return True
     except Exception as e:
-        logger.error(f"Error during watering process: {str(e)}")
-        # Make sure to turn off the pins in case of error
+        logger.error(f"Erreur pendant l'arrosage: {str(e)}")
+        # S'assurer que les pins sont éteints en cas d'erreur
         try:
             GPIO.output(valve_gpio_pin, GPIO.LOW)
             GPIO.output(PUMP_GPIO, GPIO.LOW)
@@ -94,16 +117,16 @@ def update_status(watering_id, success):
 
 def main():
     if len(sys.argv) < 3:
-        logger.error("Usage: python3 water_plant.py <valve_gpio_pin> <duration_minutes> [watering_id]")
+        logger.error("Usage: python3 water_plant.py <position> <duration_minutes> [watering_id]")
         sys.exit(1)
     
     try:
-        valve_gpio_pin = int(sys.argv[1])
+        position = int(sys.argv[1])
         duration_minutes = int(sys.argv[2])
         watering_id = sys.argv[3] if len(sys.argv) > 3 else None
         
         setup_gpio()
-        success = water_plant(valve_gpio_pin, duration_minutes)
+        success = water_plant(position, duration_minutes)
         
         if watering_id:
             update_status(watering_id, success)
@@ -112,10 +135,10 @@ def main():
         sys.exit(0 if success else 1)
         
     except ValueError:
-        logger.error("GPIO pin and duration must be integers")
+        logger.error("La position et la durée doivent être des entiers")
         sys.exit(1)
     except Exception as e:
-        logger.error(f"Unexpected error: {str(e)}")
+        logger.error(f"Erreur inattendue: {str(e)}")
         cleanup()
         sys.exit(1)
 
