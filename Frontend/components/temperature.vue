@@ -2,9 +2,9 @@
     <div class="stat-card">
         <div class="card-header">
             <h4>{{ title }}</h4>
-            <button class="refresh-button" @click="fetchTemperature" :disabled="loading"
+            <button class="refresh-button" @click="fetchTemperature" :disabled="isLoading"
                 title="Rafraîchir les données">
-                <span class="refresh-icon">↻</span>
+                <span class="refresh-icon" :class="{ 'refreshing': isLoading }">↻</span>
             </button>
         </div>
 
@@ -145,6 +145,15 @@ onUnmounted(() => {
 .refresh-icon {
     font-size: 1.2rem;
     color: #555;
+}
+
+.refresh-icon.refreshing {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .stat-value {
