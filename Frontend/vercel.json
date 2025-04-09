@@ -1,0 +1,5 @@
+{
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "https://ppe.tail923435.ts.net/api/$1" }
+    ]
+  }
