@@ -1,6 +1,14 @@
 <template>
     <div class="stat-card">
         <h4>Humidité actuelle</h4>
+        <button 
+            class="refresh-button" 
+            @click="fetchHumidityData" 
+            :disabled="loading" 
+            title="Rafraîchir les données"
+        >
+            <span class="refresh-icon">↻</span>
+        </button>
         <div v-if="loading" class="loading-indicator">Chargement...</div>
         <template v-else>
             <div class="stat-value">{{ humidityLevel }}%</div>
@@ -106,6 +114,7 @@ onMounted(() => {
     border-radius: 0.8rem;
     padding: 1rem;
     flex: 1;
+    position: relative; /* Added to position the refresh button */
 }
 
 .stat-value {
@@ -144,5 +153,34 @@ h4 {
     justify-content: center;
     color: #888;
     font-style: italic;
+}
+
+.refresh-button {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.refresh-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.refresh-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.refresh-icon {
+    font-size: 1.2rem;
+    color: #555;
 }
 </style>

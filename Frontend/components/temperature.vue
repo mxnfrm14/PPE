@@ -1,31 +1,33 @@
 <template>
     <div class="stat-card">
-        <h4>{{ title }}</h4>
-        
+        <div class="card-header">
+            <h4>{{ title }}</h4>
+            <button class="refresh-button" @click="fetchTemperature" :disabled="loading"
+                title="Rafraîchir les données">
+                <span class="refresh-icon">↻</span>
+            </button>
+        </div>
+
         <div v-if="isLoading" class="loading">Chargement...</div>
-        
+
         <template v-else-if="error">
             <div class="error-message">{{ error }}</div>
         </template>
-        
+
         <template v-else-if="temperatureData">
             <div class="stat-value">{{ temperatureData.temperature }}°C</div>
-            
+
             <div class="status-info" :class="temperatureData.status">
                 <span v-if="temperatureData.status === 'simulated'">(Simulé)</span>
                 <span v-else-if="temperatureData.status === 'cached'">(Mise en cache)</span>
             </div>
-            
+
             <div class="timestamp">
                 {{ formatTimestamp(temperatureData.timestamp) }}
             </div>
-            
-            <!-- <div class="temp-range">
-                <span>Min: 18°C</span>
-                <span>Max: 28°C</span>
-            </div> -->
+
         </template>
-        
+
         <template v-else>
             <div class="no-data">Aucune donnée disponible</div>
         </template>
@@ -33,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useAuth } from '~/composables/useAuth';
 
 const props = defineProps({
@@ -43,7 +45,7 @@ const props = defineProps({
     },
     refreshInterval: {
         type: Number,
-        default: 60000, // 30 secondes par défaut
+        default: 3600000, // 1 heure par défaut
     }
 });
 
@@ -56,7 +58,7 @@ let intervalId = null;
 // Formater l'horodatage pour une meilleure lisibilité
 const formatTimestamp = (timestamp) => {
     if (!timestamp) return '';
-    
+
     const date = new Date(timestamp.replace(' ', 'T'));
     return new Intl.DateTimeFormat('fr-FR', {
         hour: '2-digit',
@@ -71,11 +73,11 @@ const formatTimestamp = (timestamp) => {
 const fetchTemperature = async () => {
     isLoading.value = true;
     error.value = null;
-    
+
     try {
         const response = await authenticatedFetch('/api/protected/temperature');
         console.log('Données de température:', response);
-        
+
         temperatureData.value = response;
     } catch (err) {
         error.value = err.message || 'Erreur lors de la récupération de la température';
@@ -89,7 +91,7 @@ const fetchTemperature = async () => {
 onMounted(() => {
     // Première récupération
     fetchTemperature();
-    
+
     // Actualisation périodique
     if (props.refreshInterval > 0) {
         intervalId = setInterval(fetchTemperature, props.refreshInterval);
@@ -112,6 +114,37 @@ onUnmounted(() => {
     padding: 1rem;
     flex: 1;
     min-height: 100px;
+    position: relative;
+}
+
+
+.refresh-button {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.refresh-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.refresh-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.refresh-icon {
+    font-size: 1.2rem;
+    color: #555;
 }
 
 .stat-value {
@@ -139,14 +172,6 @@ onUnmounted(() => {
 
 .status-info.cached {
     color: #f44336;
-}
-
-.temp-range {
-    display: flex;
-    justify-content: space-between;
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
 }
 
 .loading {
