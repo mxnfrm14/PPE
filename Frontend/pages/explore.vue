@@ -199,12 +199,18 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue';
+import { useRuntimeConfig } from 'nuxt/app';
 import Header_title from '~/components/header_title.vue';
-import navbar from '~/components/navbar.vue'; // Maintenant c'est la navbar verticale
+import navbar from '~/components/navbar.vue';
+import { useAuth } from '~/composables/useAuth';
 
 definePageMeta({
     middleware: ['auth']
 });
+
+// Obtenir l'URL de base de l'API depuis la configuration
+const config = useRuntimeConfig();
+const apiBase = config.public.apiBaseUrl;
 
 // États de l'interface
 const isLoading = ref(false);
@@ -225,7 +231,7 @@ const userCreationResult = ref(null);
 const users = ref([]);
 const isLoadingUsers = ref(false);
 
-// Ajouter ces nouveaux états
+// États pour l'édition et la suppression
 const editingUser = ref(null);
 const showDeleteConfirm = ref(false);
 const userToDelete = ref(null);
@@ -240,7 +246,7 @@ const testConnection = async () => {
     error.value = null;
 
     try {
-        const response = await $fetch("/api/mongodb", {
+        const response = await $fetch(`${apiBase}/mongodb`, {
             method: 'GET'
         });
         console.log(response);
@@ -256,7 +262,6 @@ const testConnection = async () => {
     }
 };
 
-// Fonction pour créer un utilisateur
 // Fonction pour créer un utilisateur
 const createUser = async () => {
     if (!newUser.value.username) {
@@ -274,27 +279,24 @@ const createUser = async () => {
     error.value = null;
 
     try {
-        // 1. Structurer les données correctement pour l'API
+        // Structurer les données pour l'API
         const userData = {
             username: newUser.value.username,
             email: newUser.value.email,
             password: newUser.value.password,
-            // Assurez-vous que le rôle est une chaîne valide
             role: newUser.value.role || 'user'
         };
 
-        // 2. Utiliser le bon chemin d'API (sans le préfixe /api si votre proxy le gère)
-        const response = await $fetch('/api/auth/register', {
+        // Utiliser l'URL complète avec apiBase
+        const response = await $fetch(`${apiBase}/auth/register`, {
             method: 'POST',
             body: userData,
-            // 3. Option pour obtenir plus de détails sur l'erreur
             onResponseError({ response }) {
                 console.error("Détails de l'erreur:", response._data);
                 throw new Error(response._data?.detail || 'Erreur lors de la création de l\'utilisateur');
             }
         });
 
-        // 4. Traitement de la réponse
         userCreationResult.value = {
             status: 'success',
             message: 'Utilisateur créé avec succès',
@@ -316,7 +318,6 @@ const createUser = async () => {
         }
     } catch (err) {
         console.error('Erreur complète:', err);
-        // 5. Message d'erreur plus descriptif
         error.value = err.message || 'Une erreur s\'est produite lors de la création de l\'utilisateur';
         userCreationResult.value = {
             status: 'error',
@@ -335,7 +336,7 @@ const fetchUsers = async () => {
         // Récupérer le token depuis useAuth
         const { token } = useAuth();
         
-        const response = await $fetch('/api/auth/users', {
+        const response = await $fetch(`${apiBase}/auth/users`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token.value}`
@@ -352,6 +353,7 @@ const fetchUsers = async () => {
     }
 };
 
+// Fonction pour éditer un utilisateur
 const editUser = (user) => {
     // Copier l'utilisateur pour éviter de modifier directement les données
     editingUser.value = {
@@ -392,7 +394,7 @@ const updateUser = async () => {
         // Récupérer le token depuis useAuth
         const { token } = useAuth();
         
-        const response = await $fetch(`/api/auth/users/${editingUser.value.username}`, {
+        const response = await $fetch(`${apiBase}/auth/users/${editingUser.value.username}`, {
             method: 'PUT',
             body: updateData,
             headers: {
@@ -440,7 +442,7 @@ const deleteUser = async () => {
         // Récupérer le token depuis useAuth
         const { token } = useAuth();
         
-        await $fetch(`/api/auth/users/${userToDelete.value.username}`, {
+        await $fetch(`${apiBase}/auth/users/${userToDelete.value.username}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token.value}`
