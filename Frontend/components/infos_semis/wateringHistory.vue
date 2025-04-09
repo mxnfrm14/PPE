@@ -2,9 +2,14 @@
     <div class="watering-timeline">
         <div class="schedule-header">
             <h4>Historique d'arrosage</h4>
-            <button class="manual-water-btn" @click="$emit('openWateringPopup')">
-                Arroser manuellement
-            </button>
+            <div class="button-group">
+                <button class="manual-water-btn" @click="$emit('openWateringPopup')">
+                    Programmer un arrosage
+                </button>
+                <button class="manual-water-btn" @click="waterNow" :disabled="isWatering">
+                    {{ isWatering ? 'Arrosage en cours...' : 'Arrosage manuel' }}
+                </button>
+            </div>
         </div>
 
         <div v-if="loading" class="loading-container">
@@ -13,19 +18,14 @@
         <div v-else class="watering-list">
             <!-- Show when there are waterings -->
             <div v-if="history.length > 0">
-                <wateringHistoryItem
-                    v-for="(entry, index) in history"
-                    :key="index"
-                    :dateTime="entry.dateTime || entry.date_arrosage"
-                    :amount="entry.amount || entry.quantite_eau_ml"
-                    :duration="entry.duration"
-                    :isRecent="index === 0"
+                <wateringHistoryItem v-for="(entry, index) in history" :key="index"
+                    :dateTime="entry.dateTime || entry.date_arrosage" :amount="entry.amount || entry.quantite_eau_ml"
+                    :duration="entry.duration" :isRecent="index === 0"
                     :formattedDate="formatDate(entry.dateTime || entry.date_arrosage)"
                     :formattedTime="formatTime(entry.dateTime || entry.date_arrosage)"
-                    :timeElapsed="getTimeElapsed(entry.dateTime || entry.date_arrosage)"
-                />
+                    :timeElapsed="getTimeElapsed(entry.dateTime || entry.date_arrosage)" />
             </div>
-            
+
             <!-- Show when there are no waterings -->
             <div v-else class="empty-list">
                 <p>Aucun historique d'arrosage disponible</p>
@@ -41,6 +41,9 @@
 import { ref, watch, onMounted } from 'vue';
 import { useApi } from '~/composables/useApi';
 import wateringHistoryItem from './wateringHistoryItem.vue';
+const isWatering = ref(false);
+const wateringError = ref(null);
+
 
 const props = defineProps({
     plantId: {
@@ -59,7 +62,7 @@ const error = ref(null);
 // Format date function
 const formatDate = (dateString) => {
     if (!dateString) return 'Non défini';
-    
+
     try {
         const date = new Date(dateString);
         return date.toLocaleDateString('fr-FR', {
@@ -76,7 +79,7 @@ const formatDate = (dateString) => {
 // Format time function
 const formatTime = (dateString) => {
     if (!dateString) return '';
-    
+
     try {
         const date = new Date(dateString);
         return date.toLocaleTimeString('fr-FR', {
@@ -92,16 +95,16 @@ const formatTime = (dateString) => {
 // Calculate time elapsed from a given date
 const getTimeElapsed = (dateString) => {
     if (!dateString) return '';
-    
+
     try {
         const date = new Date(dateString);
         const now = new Date();
         const diffMs = now - date;
-        
+
         // Convert to appropriate time units
         const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
         const diffHrs = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        
+
         if (diffDays > 0) {
             return diffDays === 1 ? 'Il y a 1 jour' : `Il y a ${diffDays} jours`;
         } else if (diffHrs > 0) {
@@ -118,13 +121,13 @@ const getTimeElapsed = (dateString) => {
 
 const fetchWateringHistory = async () => {
     if (!props.plantId) return;
-    
+
     loading.value = true;
     error.value = null;
-    
+
     try {
         checkAuth();
-        
+
         const response = await $fetch(`${apiBase}/plant/arrosages/${props.plantId}`, {
             headers: getHeaders()
         });
@@ -158,6 +161,76 @@ watch(() => props.plantId, (newId) => {
 const refreshHistory = () => {
     if (props.plantId) {
         fetchWateringHistory();
+    }
+};
+
+const waterNow = async () => {
+    if (!props.plantId) {
+        alert('Erreur: Pas de plante sélectionnée');
+        return;
+    }
+    
+    isWatering.value = true;
+    wateringError.value = null;
+    
+    try {
+        checkAuth();
+        
+        // First, get plant details to find its place
+        const plantResponse = await $fetch(`${apiBase}/plant/semis/${props.plantId}`, {
+            headers: getHeaders()
+        });
+        
+        if (!plantResponse || !plantResponse.place) {
+            throw new Error('Impossible de déterminer la position de la plante');
+        }
+        
+        const place = plantResponse.place;
+        
+        // Get current humidity for this place
+        let humidityData = null;
+        try {
+            const humidityResponse = await $fetch(`${apiBase}/protected/humidity/${place}`, {
+                headers: getHeaders()
+            });
+            humidityData = humidityResponse;
+            console.log('Humidité actuelle:', humidityResponse);
+        } catch (humErr) {
+            console.error('Erreur lors de la lecture du capteur d\'humidité:', humErr);
+            // Continue anyway, as we want to water even if sensor reading fails
+        }
+        
+        // Trigger immediate watering
+        const wateringResponse = await $fetch(`${apiBase}/plant/watering/now`, {
+            method: 'POST',
+            body: {
+                plantId: props.plantId,
+                position: place,
+                duration: 5 // Default duration: 5 minutes
+            },
+            headers: getHeaders()
+        });
+        
+        console.log('Réponse arrosage:', wateringResponse);
+        
+        // Show success message
+        let successMessage = `Arrosage manuel déclenché pour la plante en position ${place}`;
+        if (humidityData && humidityData.humidity !== null) {
+            successMessage += `. Humidité avant arrosage: ${humidityData.humidity}%`;
+        }
+        alert(successMessage);
+        
+        // Refresh the watering history after a short delay
+        setTimeout(() => {
+            fetchWateringHistory();
+        }, 2000);
+        
+    } catch (err) {
+        console.error('Erreur lors du déclenchement de l\'arrosage:', err);
+        wateringError.value = err.message || 'Erreur lors du déclenchement de l\'arrosage';
+        alert(`Erreur: ${wateringError.value}`);
+    } finally {
+        isWatering.value = false;
     }
 };
 
@@ -259,5 +332,16 @@ h4 {
     justify-content: center;
     color: #888;
     font-style: italic;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+    }
 }
 </style>
