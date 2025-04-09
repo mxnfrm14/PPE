@@ -1,32 +1,43 @@
-#!/usr/bin/env python3
-
 import RPi.GPIO as GPIO
 import time
 
-def main():
-    # Use BCM GPIO numbering
-    GPIO.setmode(GPIO.BCM)
+# Set the GPIO mode to BCM
+GPIO.setmode(GPIO.BCM)
+
+# Define the GPIO pin number
+PUMP_PIN = 12
+
+# Set up the GPIO pin as an output
+GPIO.setup(PUMP_PIN, GPIO.OUT)
+
+def activate_pump(duration=10):
+    """
+    Activate the pump by setting GPIO 6 to HIGH for the specified duration.
     
-    # Set up GPIO pin 4 as output
-    GPIO_PIN = 4
-    GPIO.setup(GPIO_PIN, GPIO.OUT)
-    
+    Args:
+        duration (int): Time in seconds to keep the pump on. Default is 10 seconds.
+    """
     try:
-        # Set pin 4 to HIGH (3.3V)
-        print(f"Setting GPIO pin {GPIO_PIN} HIGH for 10 seconds...")
-        GPIO.output(GPIO_PIN, GPIO.HIGH)
+        print(f"Turning pump ON for {duration} seconds...")
         
-        # Wait for 10 seconds
-        time.sleep(10)
+        # Set the GPIO pin to HIGH (3.3V) to activate the pump
+        GPIO.output(PUMP_PIN, GPIO.LOW)
         
-        # Set pin 4 back to LOW (0V)
-        print(f"Setting GPIO pin {GPIO_PIN} LOW")
-        GPIO.output(GPIO_PIN, GPIO.LOW)
+        # Wait for the specified duration
+        time.sleep(duration)
         
-    finally:
-        # Clean up GPIO settings
-        GPIO.cleanup()
-        print("GPIO cleanup completed")
+        # Set the GPIO pin to LOW (0V) to deactivate the pump
+        GPIO.output(PUMP_PIN, GPIO.HIGH)
+        
+        print("Pump turned OFF")
+    
+    except KeyboardInterrupt:
+        # Handle Ctrl+C gracefully
+        print("Operation canceled by user")
+    #finally:
+        # Clean up GPIO to release resources
+        #GPIO.cleanup()
 
 if __name__ == "__main__":
-    main()
+    # Activate the pump for 10 seconds
+    activate_pump(10)

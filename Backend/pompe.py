@@ -10,7 +10,7 @@ PUMP_PIN = 6
 # Set up the GPIO pin as an output
 GPIO.setup(PUMP_PIN, GPIO.OUT)
 
-def activate_pump(duration=10):
+def activate_pump(duration=5):
     """
     Activate the pump by setting GPIO 6 to HIGH for the specified duration.
     
@@ -34,9 +34,9 @@ def activate_pump(duration=10):
     except KeyboardInterrupt:
         # Handle Ctrl+C gracefully
         print("Operation canceled by user")
-    finally:
-        # Clean up GPIO to release resources
-        GPIO.cleanup()
+    # finally:
+    #     # Clean up GPIO to release resources
+    #     GPIO.cleanup()
 
 if __name__ == "__main__":
     # Activate the pump for 10 seconds
