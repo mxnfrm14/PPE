@@ -75,7 +75,8 @@ const fetchTemperature = async () => {
     error.value = null;
 
     try {
-        const response = await authenticatedFetch('/api/protected/temperature');
+        const apiBase = useRuntimeConfig().public.apiBaseUrl;
+        const response = await authenticatedFetch(`${apiBase}/protected/temperature`);
         console.log('Données de température:', response);
 
         temperatureData.value = response;
