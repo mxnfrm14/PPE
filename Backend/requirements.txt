@@ -11,3 +11,4 @@ python-dotenv==1.0.1
 bcrypt==4.1.2
 smbus2==0.4.2
 RPi.GPIO
+spidev
