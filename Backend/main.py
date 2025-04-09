@@ -21,7 +21,7 @@ app = FastAPI(title="E-Garden Smart Gardening System")
 # CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, limit to specific domains
+    allow_origins=["https://ppe-puce.vercel.app", "http://localhost:3000"],  # In production, limit to specific domains
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

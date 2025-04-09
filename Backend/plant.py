@@ -6,10 +6,37 @@ from typing import List, Optional
 from bson.objectid import ObjectId
 from auth import get_current_active_user, User
 
+import subprocess
+import os
+from pathlib import Path
+
 # Create a router with the /api prefix
 plants_router = APIRouter(prefix="/plant", tags=["plants"])
 
 # Models
+
+# Mapping of positions to GPIO pins
+GPIO_MAPPING = {
+    1: 4,
+    2: 17,
+    3: 27,
+    4: 22,
+    5: 0,
+    6: 5,
+    7: 26,  
+    8: 23,
+    9: 24,
+    10: 25,
+    11: 12,
+    12: 16
+}
+
+# Model for immediate watering
+class ImmediateWateringRequest(BaseModel):
+    plantId: str
+    position: int = Field(..., ge=1, le=12)
+    duration: int = Field(..., gt=0, le=60)
+
 class SemisBase(BaseModel):
     nom: str = Field(..., min_length=1, max_length=50, description="Name of the plant")
     date_plantation: str = Field(..., description="Date of plantation (YYYY-MM-DD)")
@@ -210,7 +237,7 @@ async def delete_semis(
         )
     
     # Delete any associated watering records
-    await db.arrosages.delete_many({"semis_id": semis_id})
+    await db.arrosages.delete_many({"plantId": semis_id})
     
     # Delete the semis
     await db.semis.delete_one({"_id": semis_obj_id})
@@ -333,3 +360,116 @@ async def water_plant(
         "message": "Arrosage enregistré avec succès",
         "id": str(result.inserted_id)
     }
+
+@plants_router.post("/watering/now", status_code=status.HTTP_200_OK)
+async def trigger_immediate_watering(
+    request: ImmediateWateringRequest,
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncIOMotorDatabase = Depends(get_database)
+):
+    """Trigger immediate watering for a plant at a specific position"""
+    try:
+        # Verify plant exists
+        plant_obj_id = ObjectId(request.plantId)
+        plant = await db.semis.find_one({"_id": plant_obj_id})
+        
+        if not plant:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Plant with ID {request.plantId} not found"
+            )
+        
+        # Verify position matches the plant's position
+        if plant.get("place") != request.position:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Position mismatch with the plant's registered position"
+            )
+        
+        # Record watering in database first
+        watering_record = {
+            "plantId": request.plantId,
+            "dateTime": datetime.now().isoformat(),
+            "duration": request.duration,
+            "amount": request.duration * 40,  # Estimate 40ml per minute
+            "created_at": datetime.now().isoformat(),
+            "created_by": current_user.username,
+            "automated": False,
+            "completed": False  # Will be updated by script callback
+        }
+        
+        result = await db.arrosages.insert_one(watering_record)
+        watering_id = str(result.inserted_id)
+        
+        # Update plant's last watering timestamp
+        await db.semis.update_one(
+            {"_id": plant_obj_id},
+            {"$set": {"dernier_arrosage": datetime.now().isoformat()}}
+        )
+        
+        # Path to watering script
+        script_path = Path(__file__).parent / "scripts" / "water_plant.py"
+        
+        if not script_path.exists():
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Watering script not found"
+            )
+        
+        # Execute the watering script with position directly (not GPIO pin)
+        try:
+            # Non-blocking execution with watering_id
+            process = subprocess.Popen([
+                "sudo", "python3", 
+                str(script_path), 
+                str(request.position),  # Pass position directly, not GPIO pin
+                str(request.duration),
+                watering_id
+            ])
+            
+            return {
+                "status": "success",
+                "message": f"Watering triggered at position {request.position} for {request.duration} minutes",
+                "watering_id": watering_id
+            }
+            
+        except Exception as e:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Failed to execute watering script: {str(e)}"
+            )
+            
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Unexpected error: {str(e)}"
+        )
+
+@plants_router.post("/watering/status/internal")
+async def update_watering_status_internal(
+    watering_id: str,
+    success: bool,
+    db: AsyncIOMotorDatabase = Depends(get_database)
+):
+    """Internal endpoint for updating watering status without authentication"""
+    try:
+        watering_obj_id = ObjectId(watering_id)
+        
+        # Update the status
+        await db.arrosages.update_one(
+            {"_id": watering_obj_id},
+            {"$set": {
+                "completed": True,
+                "success": success,
+                "completed_at": datetime.now().isoformat()
+            }}
+        )
+        
+        return {"status": "success", "message": "Watering status updated"}
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to update watering status: {str(e)}"
+        )
