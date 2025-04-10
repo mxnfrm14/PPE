@@ -1,0 +1,2027 @@
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [9456] using StatReload
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     Started server process [9471]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.117.36.67:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.117.36.67:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2b2bf65dc95a4a8710a10 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /auth/users HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/users HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [3046] using StatReload
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     Started server process [3048]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f67bdbc4743b2aa25b3430 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/11 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+ERROR:    [Errno 98] Address already in use
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+ERROR:    [Errno 98] Address already in use
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+ERROR:    [Errno 98] Address already in use
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3048]
+MongoDB connection closed
+INFO:     Stopping reloader process [3046]
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [2465] using StatReload
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     Started server process [2467]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:     100.114.128.22:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/scripts/water_plant.py", line 11, in <module>
+    import RPi.GPIO as GPIO
+ModuleNotFoundError: No module named 'RPi'
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2467]
+MongoDB connection closed
+INFO:     Started server process [3293]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/scripts/water_plant.py", line 11, in <module>
+    import RPi.GPIO as GPIO
+ModuleNotFoundError: No module named 'RPi'
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'scripts/water_plant_cmd.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3293]
+MongoDB connection closed
+INFO:     Started server process [3467]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3467]
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+MongoDB connection closed
+INFO:     Started server process [3492]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'scripts/water_plant_sysfs.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3492]
+MongoDB connection closed
+INFO:     Started server process [4303]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4303]
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+MongoDB connection closed
+INFO:     Started server process [4340]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     18.228.117.208:0 - "GET /.git/config HTTP/1.1" 404 Not Found
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f18bcfd58b1e11052bdc74 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 500 Internal Server Error
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4340]
+MongoDB connection closed
+INFO:     Stopping reloader process [2465]
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [2421] using StatReload
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     Started server process [2439]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:     100.114.128.22:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 500 Internal Server Error
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2439]
+MongoDB connection closed
+INFO:     Started server process [2961]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+2025-04-10 11:52:23,189 - plant_api - INFO - Requête d'arrosage reçue pour la position 5
+2025-04-10 11:52:23,210 - plant_api - INFO - Enregistrement de l'arrosage en base de données pour la plante Test
+2025-04-10 11:52:23,269 - plant_api - INFO - Démarrage de l'arrosage direct pour la position 5
+2025-04-10 11:52:23,270 - plant_api - INFO - Position 5 -> GPIO 16, pompe GPIO 6
+2025-04-10 11:52:23,296 - plant_api - INFO - Arrosage programmé avec succès pour la position 5
+2025-04-10 11:52:23,297 - plant_api - INFO - Exécution du script: /home/ppe/Documents/PPE/Backend/pompeetev8.py
+2025-04-10 11:52:23,300 - plant_api - INFO - Script lancé avec PID: 2985
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2961]
+MongoDB connection closed
+INFO:     Stopping reloader process [2421]
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [2557] using StatReload
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     Started server process [2559]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+2025-04-10 12:01:31,733 - plant_api - INFO - Requête d'arrosage reçue pour la position 5
+2025-04-10 12:01:31,747 - plant_api - INFO - Enregistrement de l'arrosage en base de données pour la plante Test
+2025-04-10 12:01:31,792 - plant_api - INFO - Démarrage de l'arrosage direct pour la position 5
+2025-04-10 12:01:31,792 - plant_api - INFO - Position 5 -> GPIO 16, pompe GPIO 6
+2025-04-10 12:01:31,812 - plant_api - INFO - Arrosage programmé avec succès pour la position 5
+2025-04-10 12:01:31,812 - plant_api - INFO - Exécution du script: /home/ppe/Documents/PPE/Backend/pompeetev8.py
+2025-04-10 12:01:31,816 - plant_api - INFO - Script lancé avec PID: 2583
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+sudo: a password is required
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2559]
+MongoDB connection closed
+INFO:     Stopping reloader process [2557]
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [2629] using StatReload
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     Started server process [2633]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+2025-04-10 12:07:58,317 - plant_api - INFO - Requête d'arrosage reçue pour la position 5
+2025-04-10 12:07:58,364 - plant_api - INFO - Enregistrement de l'arrosage en base de données pour la plante Test
+2025-04-10 12:07:58,444 - plant_api - INFO - Démarrage de l'arrosage direct pour la position 5
+2025-04-10 12:07:58,445 - plant_api - INFO - Position 5 -> GPIO 16, pompe GPIO 6
+2025-04-10 12:07:58,476 - plant_api - INFO - Arrosage programmé avec succès pour la position 5
+2025-04-10 12:07:58,477 - plant_api - INFO - Exécution du script: /home/ppe/Documents/PPE/Backend/pompeetev8.py
+2025-04-10 12:07:58,479 - plant_api - INFO - Script lancé avec PID: 2674
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/pompeetev8.py", line 3, in <module>
+    import RPi.GPIO as GPIO
+ModuleNotFoundError: No module named 'RPi'
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2633]
+MongoDB connection closed
+INFO:     Started server process [3204]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 500 Internal Server Error
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3204]
+MongoDB connection closed
+INFO:     Started server process [3336]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/scripts/water_plant.py", line 11, in <module>
+    import RPi.GPIO as GPIO
+ModuleNotFoundError: No module named 'RPi'
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:     100.114.128.22:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/scripts/water_plant.py", line 11, in <module>
+    import RPi.GPIO as GPIO
+ModuleNotFoundError: No module named 'RPi'
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3336]
+MongoDB connection closed
+INFO:     Stopping reloader process [2629]
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [2530] using StatReload
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     Started server process [2532]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'HEAD', 'GET'}
+/docs - {'HEAD', 'GET'}
+/docs/oauth2-redirect - {'HEAD', 'GET'}
+/redoc - {'HEAD', 'GET'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/scripts/water_plant.py", line 11, in <module>
+    import RPi.GPIO as GPIO
+ModuleNotFoundError: No module named 'RPi'
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+2025-04-10 12:32:49,560 - water_plant - INFO - Position 5 correspond au GPIO 16
+2025-04-10 12:32:49,564 - water_plant - INFO - Configuration des GPIO: électrovanne 16 et pompe 6
+2025-04-10 12:32:49,564 - water_plant - INFO - Activation pompe (GPIO 6) et électrovanne (GPIO 16) pour 5 minutes
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+2025-04-10 12:37:49,565 - water_plant - INFO - Désactivation électrovanne (GPIO 16) et pompe (GPIO 6)
+2025-04-10 12:37:49,565 - water_plant - INFO - Arrosage terminé avec succès pour la position 5 (GPIO 16)
+INFO:     127.0.0.1:43844 - "POST /api/plant/watering/status/internal?watering_id=67f79e5014cd336bd60dd0ba&success=True HTTP/1.1" 404 Not Found
+2025-04-10 12:37:49,582 - water_plant - ERROR - Failed to update watering status: 404 - {"detail":"Not Found"}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+ERROR:    [Errno 98] Address already in use
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+WARNING:  StatReload detected changes in 'scripts/water_plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2532]
+MongoDB connection closed
+INFO:     Started server process [4032]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f2f169309a4ad6884062fc HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f2f169309a4ad6884062fc HTTP/1.1" 401 Unauthorized
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 401 Unauthorized
+/home/ppe/Documents/PPE/Backend/main.py:38: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/ppe/Documents/PPE/Backend/main.py:51: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Will watch for changes in these directories: ['/home/ppe/Documents/PPE/Backend']
+ERROR:    [Errno 98] Address already in use
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+INFO:     100.114.128.22:0 - "OPTIONS /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/ppe/Documents/PPE/Backend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:     100.114.128.22:0 - "POST /auth/token HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'scripts/water_plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4032]
+MongoDB connection closed
+WARNING:  StatReload detected changes in 'scripts/water_plant.py'. Reloading...
+INFO:     Started server process [4515]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'scripts/water_plant.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4515]
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+MongoDB connection closed
+WARNING:  StatReload detected changes in 'scripts/water_plant.py'. Reloading...
+INFO:     Started server process [4539]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING: Using default JWT secret key. Set JWT_SECRET_KEY in .env file.
+Pinged your deployment. You successfully connected to MongoDB!
+Routes disponibles:
+/openapi.json - {'GET', 'HEAD'}
+/docs - {'GET', 'HEAD'}
+/docs/oauth2-redirect - {'GET', 'HEAD'}
+/redoc - {'GET', 'HEAD'}
+/auth/register - {'POST'}
+/auth/token - {'POST'}
+/auth/me - {'GET'}
+/auth/users/{username} - {'PUT'}
+/auth/users/{username} - {'DELETE'}
+/auth/users - {'GET'}
+/auth/users/{username} - {'GET'}
+/protected/data - {'GET'}
+/protected/temperature - {'GET'}
+/protected/humidity - {'GET'}
+/protected/humidity/{place} - {'GET'}
+/plant/semis - {'GET'}
+/plant/semis/{plant_id} - {'GET'}
+/plant/semis - {'POST'}
+/plant/semis/{semis_id} - {'PUT'}
+/plant/semis/{semis_id} - {'DELETE'}
+/plant/infos/{plant_type} - {'GET'}
+/plant/arrosages/{semis_id} - {'GET'}
+/plant/arrosages - {'POST'}
+/plant/watering/now - {'POST'}
+/plant/watering/status/internal - {'POST'}
+/ - {'GET'}
+/mongodb - {'GET'}
+/users/test - {'POST'}
+/users - {'GET'}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/temperature HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f18b34d58b1e11052bdc73 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18b34d58b1e11052bdc73 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f18b34d58b1e11052bdc73 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f18b34d58b1e11052bdc73 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18b34d58b1e11052bdc73 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f18b34d58b1e11052bdc73 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f18b34d58b1e11052bdc73 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/8 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f6e68bda3757fe0989c1f1 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "OPTIONS /plant/watering/now HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "POST /plant/watering/now HTTP/1.1" 200 OK
+2025-04-10 13:29:14,398 - water_plant - INFO - Position 5 correspond au GPIO 16
+2025-04-10 13:29:14,399 - water_plant - INFO - Configuration des GPIO: électrovanne 16 et pompe 6
+2025-04-10 13:29:14,399 - water_plant - INFO - Activation pompe (GPIO 6) et électrovanne (GPIO 16) pour 5 minutes
+INFO:     100.114.128.22:0 - "GET /plant/arrosages/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+2025-04-10 13:29:19,400 - water_plant - INFO - Désactivation électrovanne (GPIO 16) et pompe (GPIO 6)
+2025-04-10 13:29:19,400 - water_plant - INFO - Arrosage terminé avec succès pour la position 5 (GPIO 16)
+INFO:     127.0.0.1:36662 - "POST /api/plant/watering/status/internal?watering_id=67f7ab895210ea219dcbb658&success=True HTTP/1.1" 404 Not Found
+2025-04-10 13:29:19,413 - water_plant - ERROR - Failed to update watering status: 404 - {"detail":"Not Found"}
+INFO:     100.114.128.22:0 - "GET /plant/semis/67f4d1551df44d77332a0295 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /protected/humidity/5 HTTP/1.1" 200 OK
+INFO:     100.114.128.22:0 - "GET /plant/infos/carotte HTTP/1.1" 200 OK

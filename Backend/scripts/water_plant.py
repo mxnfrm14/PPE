@@ -2,7 +2,7 @@
 """
 water_plant.py - Script to control watering system GPIO pins on Raspberry Pi
 
-Usage: python3 water_plant.py <valve_position> <duration_minutes> [watering_id]
+Usage: python3 water_plant.py <valve_position> <duration> [watering_id]
 """
 
 import sys
@@ -54,13 +54,13 @@ def cleanup():
     """Clean up GPIO pins"""
     GPIO.cleanup()
 
-def water_plant(position, duration_minutes):
+def water_plant(position, duration):
     """
     Activate watering for the specified position, for the given duration
     
     Args:
         position (int): Position number (1-12) to activate
-        duration_minutes (int): Duration in minutes to keep the pins active
+        duration (int): Duration in minutes to keep the pins active
     """
     if position not in VALVE_MAPPING:
         logger.error(f"Position invalide: {position}")
@@ -75,17 +75,16 @@ def water_plant(position, duration_minutes):
         GPIO.setup(PUMP_GPIO, GPIO.OUT)
         
         # Activation de la pompe (HIGH) et de l'électrovanne (LOW pour activer)
-        logger.info(f"Activation pompe (GPIO {PUMP_GPIO}) et électrovanne (GPIO {valve_gpio_pin}) pour {duration_minutes} minutes")
+        logger.info(f"Activation pompe (GPIO {PUMP_GPIO}) et électrovanne (GPIO {valve_gpio_pin}) pour {duration} minutes")
         GPIO.output(PUMP_GPIO, GPIO.HIGH)
-        GPIO.output(valve_gpio_pin, GPIO.LOW)  # Note: LOW pour activer conformément au code original
+        GPIO.output(valve_gpio_pin, GPIO.HIGH)  # Note: LOW pour activer conformément au code original
         
-        # Attendre la durée spécifiée
-        duration_seconds = duration_minutes * 60
-        time.sleep(duration_seconds)
+        
+        time.sleep(duration)
         
         # Désactivation de la pompe et de l'électrovanne
         logger.info(f"Désactivation électrovanne (GPIO {valve_gpio_pin}) et pompe (GPIO {PUMP_GPIO})")
-        GPIO.output(valve_gpio_pin, GPIO.LOW)  # Maintenir LOW ou mettre HIGH selon votre configuration
+        GPIO.output(valve_gpio_pin, GPIO.LOW)
         GPIO.output(PUMP_GPIO, GPIO.LOW)
         
         logger.info(f"Arrosage terminé avec succès pour la position {position} (GPIO {valve_gpio_pin})")
@@ -117,16 +116,16 @@ def update_status(watering_id, success):
 
 def main():
     if len(sys.argv) < 3:
-        logger.error("Usage: python3 water_plant.py <position> <duration_minutes> [watering_id]")
+        logger.error("Usage: python3 water_plant.py <position> <duration> [watering_id]")
         sys.exit(1)
     
     try:
         position = int(sys.argv[1])
-        duration_minutes = int(sys.argv[2])
+        duration = int(sys.argv[2])
         watering_id = sys.argv[3] if len(sys.argv) > 3 else None
         
         setup_gpio()
-        success = water_plant(position, duration_minutes)
+        success = water_plant(position, duration)
         
         if watering_id:
             update_status(watering_id, success)
