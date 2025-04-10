@@ -206,7 +206,7 @@
           },
           { 
             name: "Raphaël Pinard", 
-            role: "Développeur Frontend", 
+            role: "Electronicien", 
             major: "Majeure Système Embarqué",
             image: "/assets/creditImages/raphael.PNG",
             linkedin: "https://www.linkedin.com/in/rapha%C3%ABl-pinard-507643269/" 
@@ -220,14 +220,14 @@
           },
           { 
             name: "Lily Wunsch", 
-            role: "Responsable communication", 
+            role: "Développeur Frontend", 
             major: "Majeure Énergies et Environnement",
             image: "/assets/creditImages/lily.PNG",
             linkedin: "https://www.linkedin.com/in/lily-wunsch-784555252/" 
           },
           { 
             name: "Jeffrey Jacquin", 
-            role: "Développeur IoT", 
+            role: "Responsable communication", 
             major: "Majeure Énergies et Environnement",
             image: "/assets/creditImages/jeffrey.PNG",
             linkedin: "https://www.linkedin.com/in/jeffrey-jacquin-415590252/" 
@@ -241,7 +241,7 @@
           },
           { 
             name: "Daria Cousy", 
-            role: "Développeuse Backend", 
+            role: "Architecte Backend", 
             major: "Majeure Énergies et Environnement",
             image: "/assets/creditImages/daria.PNG",
             linkedin: "https://www.linkedin.com/in/daria-cousy/" 
