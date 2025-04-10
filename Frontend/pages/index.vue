@@ -288,7 +288,7 @@
       startSlideshow() {
         this.slideInterval = setInterval(() => {
           this.nextSlide();
-        }, 3000);
+        }, 5000);
       },
       stopSlideshow() {
         clearInterval(this.slideInterval);
