@@ -201,7 +201,7 @@
             name: "Maxence Fromentin", 
             role: "Chef de projet", 
             major: "Majeure CREATE",
-            image: "/assets/creditImages/maxence.png",
+            image: "/assets/creditImages/maxence.png", // fix image path
             linkedin: "https://www.linkedin.com/in/maxence-fromentin-654618256/" 
           },
           { 
