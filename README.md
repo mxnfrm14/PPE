@@ -114,7 +114,10 @@ Le projet est composé de deux parties principales :
 - `auth.py` : Routes et logique d'authentification
 - `plant.py` : Route et logique d'arrosasage et de recupération des données des capteurs
 
-Nous avons aussi les différents codes qui permettent l'activation des différents composants branchés sur notre Raspberry 4, ainsi que des codes de récupérations des données des capteurs.
+Nous avons aussi les différents codes qui permettent l'activation des différents composants branchés sur notre Raspberry Pi 4, ainsi que des codes de récupérations des données des capteurs.
+
+### Connexion 
+Nous avons utilisé Tailscale, et particulièrement la fonctionnalité funnel, qui nous permet de communiquer entre notre front-end hosté via vercel, et notre backend directement sur la Raspberry Pi 4 situé dans la serre, dans le jardin sur le toit de l'école.
 
 ## Dépannage
 
