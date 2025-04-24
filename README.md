@@ -1,6 +1,6 @@
 # GoutteAGoutte - Système de Jardinage Intelligent
 
-GoutteAGoutte est une application web permettant de gérer et de surveiller un jardin connecté. L'application offre des fonctionnalités de suivi des plantes, d'arrosage automatique et de conseils personnalisés pour votre jardin.
+GoutteAGoutte est une application web permettant de gérer et de surveiller un jardin connecté. L'application offre des fonctionnalités de suivi des plantes, d'arrosage a distance pour le jardin de l'ECE.
 
 ## Structure du Projet
 
