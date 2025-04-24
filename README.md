@@ -1,6 +1,6 @@
-# E-Garden - Système de Jardinage Intelligent
+# GoutteAGoutte - Système de Jardinage Intelligent
 
-E-Garden est une application web permettant de gérer et de surveiller un jardin connecté. L'application offre des fonctionnalités de suivi des plantes, d'arrosage automatique et de conseils personnalisés pour votre jardin.
+GoutteAGoutte est une application web permettant de gérer et de surveiller un jardin connecté. L'application offre des fonctionnalités de suivi des plantes, d'arrosage automatique et de conseils personnalisés pour votre jardin.
 
 ## Structure du Projet
 
@@ -112,17 +112,9 @@ Le projet est composé de deux parties principales :
 ### Backend
 - `main.py` : Point d'entrée de l'API FastAPI
 - `auth.py` : Routes et logique d'authentification
+- `plant.py` : Route et logique d'arrosasage et de recupération des données des capteurs
 
-## API Endpoints
-
-### Authentification
-- `POST /api/auth/register` : Inscription d'un nouvel utilisateur
-- `POST /api/auth/token` : Connexion et obtention du token JWT
-- `GET /api/auth/me` : Obtenir les informations de l'utilisateur connecté
-
-### Tests
-- `GET /api/mongodb` : Test de connexion à MongoDB
-- `POST /api/users/test` : Création d'un utilisateur de test
+Nous avons aussi les différents codes qui permettent l'activation des différents composants branchés sur notre Raspberry 4, ainsi que des codes de récupérations des données des capteurs.
 
 ## Dépannage
 
